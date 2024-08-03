@@ -1,4 +1,5 @@
 import Data.List.Split (splitOn)
+import Data.Maybe (fromMaybe)
 
 -- module Main (main) where
 
@@ -38,6 +39,8 @@ main = do
   
   -- Display the feature pool
   putStrLn $ "Feature Pool:\n" ++ showFeaturePool featurePool
+
+  putStrLn $ "Test 1 results:\n" ++ show (example1 ())
 
 -- Convert a feature pool to a string for display purposes
 showFeaturePool :: [Feature] -> String
@@ -105,5 +108,29 @@ checkPointConstraint point constraint = case constraint of
   Negative (NegativeConstraint c) -> fmap not (checkPointConstraint point (Affirm c))
   Count _ -> Nothing
 
-  
+checkCurveConstraint :: Curve -> FactConstraint -> Bool  
+checkCurveConstraint curve constraint = case constraint of 
+  Exists _ -> (foldr (||) False . map (fromMaybe False))  pointChecks
+  Affirm _ -> (foldr (&&) True . map (fromMaybe True))  pointChecks
+  Negative _ -> (foldr (&&) True . map (fromMaybe True))  pointChecks
+  Count (CountConstraint c cval) -> case c of
+    Equ -> len == cval
+    Leq -> len <= cval
+    Geq -> len >= cval
+    where len = length curve
+  where pointChecks = map ( `checkPointConstraint` constraint ) curve
+
+testData1 :: FactConstraint
+testData1 = Exists (ExistsConstraint (Idx 0) (Val 10))
+testCurve2 :: Curve
+testCurve2 = map (map Val) [ [10, 3, 3], [1, 1, 1] ]
+testData3 :: FactConstraint
+testData3 = Affirm (AffirmConstraint (Idx 0) (Val 100) (Idx 1) (Val 4))
+testData4 :: FactConstraint
+testData4 = Negative (NegativeConstraint (AffirmConstraint (Idx 0) (Val 10) (Idx 1) (Val 3)))
+
+example1 :: () -> String
+example1 _ = show (checkCurveConstraint testCurve2 testData4)
+-- example1 _ = show (checkPointConstraint (testCurve2 !! 0) testData3)
+
 
