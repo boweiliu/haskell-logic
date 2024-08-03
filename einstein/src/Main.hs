@@ -65,7 +65,7 @@ type Curve = [ Point ] -- Any number of points
 
 data UniverseParams = UniverseParams 
  -- maxIdx,      maxVals
-  { univDims :: Int,
+  { numUnivDims :: Int,
 -- isInjective :: Bool,
     coordDims :: CubeDims
   } deriving ( Show, Eq )
@@ -120,6 +120,7 @@ checkCurveConstraint curve constraint = case constraint of
     where len = length curve
   where pointChecks = map ( `checkPointConstraint` constraint ) curve
 
+-- hum dum. testing
 testData1 :: FactConstraint
 testData1 = Exists (ExistsConstraint (Idx 0) (Val 10))
 testCurve2 :: Curve
@@ -130,7 +131,24 @@ testData4 :: FactConstraint
 testData4 = Negative (NegativeConstraint (AffirmConstraint (Idx 0) (Val 10) (Idx 1) (Val 3)))
 
 example1 :: () -> String
-example1 _ = show (checkCurveConstraint testCurve2 testData4)
+-- example1 _ = show (checkCurveConstraint testCurve2 testData4)
 -- example1 _ = show (checkPointConstraint (testCurve2 !! 0) testData3)
+example1 _ = show (generateAllPoints (UniverseParams 3 [3,4,5]))
+
+
+-- i want to generate all valid curves in a UniverseParams
+-- first, generate all points
+-- then any set of any number of points  is a curve
+-- then filter by satisfying d-dim injectivity (no repeated coordinate values)
+-- data UniverseParams = UniverseParams 
+
+generateAllPoints :: UniverseParams -> [ Point ]
+generateAllPoints (UniverseParams d ns) = case d of
+  0 -> [ [] ]
+  _ -> let  tailDimPoints = generateAllPoints (UniverseParams (d-1) (tail ns))
+            idxs = map Val [0 .. (head ns - 1)]
+    in
+    liftA2 (:) idxs tailDimPoints
+
 
 
