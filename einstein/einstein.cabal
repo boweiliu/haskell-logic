@@ -27,5 +27,6 @@ executable einstein
                        -Wincomplete-uni-patterns
                        -Wmissing-export-lists
                        -Wmissing-home-modules
+                       -Wno-unused-top-binds
                        -Wpartial-fields
                        -Wredundant-constraints

@@ -11,20 +11,38 @@ import Data.List.Split (splitOn)
 featuresPoolFileName :: FilePath
 featuresPoolFileName = "features.txt"
 
-type FeatureValueSet = [ String ]
-type FeatureValuePool = [ FeatureValueSet ]
+data Feature = Feature
+  { description :: String,
+    values :: [ String ]
+  } deriving (Show)
+
+type FeaturePool = [ Feature ]
 
 type Point = [ Int ]
 type Variety = [ Point ]
 
+parseFeatureSection :: String -> Feature
+parseFeatureSection section =
+  case lines section of
+    [] -> error ("could not parse section" ++ section)
+    (d:v) -> Feature d (filter (not . null) v)
 
 -- Read and parse the feature value pool from the file
-readFeatureValuePool :: FilePath -> IO FeatureValuePool
-readFeatureValuePool filePath = do
+readFeaturePool :: FilePath -> IO FeaturePool
+readFeaturePool filePath = do
   content <- readFile filePath
-  let rawFeatureValueSets = splitOn "--" content
-  return $ map (filter (not . null) . lines) rawFeatureValueSets
+  let sections = splitOn "--" content
+  return $ map parseFeatureSection (filter (not . null) sections)
 
 main :: IO ()
 main = do
-  putStrLn "hello world"
+  -- Read the feature pool from the file
+  featurePool <- readFeaturePool "features.txt"
+  
+  -- Display the feature pool
+  putStrLn $ "Feature Pool:\n" ++ showFeaturePool featurePool
+
+-- Convert a feature pool to a string for display purposes
+showFeaturePool :: [Feature] -> String
+showFeaturePool features =
+  concatMap show features
