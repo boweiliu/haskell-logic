@@ -18,9 +18,6 @@ data Feature = Feature
 
 type FeaturePool = [ Feature ]
 
-type Point = [ Int ]
-type Variety = [ Point ]
-
 parseFeatureSection :: String -> Feature
 parseFeatureSection section =
   case filter (not . null ) (lines section) of
@@ -37,7 +34,7 @@ readFeaturePool filePath = do
 main :: IO ()
 main = do
   -- Read the feature pool from the file
-  featurePool <- readFeaturePool "features.txt"
+  featurePool <- readFeaturePool featuresPoolFileName
   
   -- Display the feature pool
   putStrLn $ "Feature Pool:\n" ++ showFeaturePool featurePool
@@ -47,3 +44,8 @@ showFeaturePool :: [Feature] -> String
 showFeaturePool features =
   concatMap showFeature features
   where showFeature f = (show f ++ "\n")
+
+
+type Point = [ Int ]
+type Variety = [ Point ]
+
