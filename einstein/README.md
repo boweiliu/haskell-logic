@@ -1,0 +1,5 @@
+# einstein
+
+# ghcid
+
+# stack run
