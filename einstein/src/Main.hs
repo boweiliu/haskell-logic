@@ -46,6 +46,64 @@ showFeaturePool features =
   where showFeature f = (show f ++ "\n")
 
 
-type Point = [ Int ]
-type Variety = [ Point ]
+-- Now start defining space over which to do the computation.
+newtype Idx = Idx Int deriving (Show, Eq) -- indexes into a vector, specifying which coord
+newtype Val = Val Int deriving (Show, Eq) -- the value a coordinate can hold
+toInt :: Idx -> Int
+toInt (Idx i) = i
+
+type Point = [ Val ] -- len == $d$
+type CubeDims = [ Int ] -- len == $d$
+type Curve = [ Point ] -- Any number of points
+
+-- start by defining parameters:
+-- d = 2 (dimensions)
+-- n_0 = 3, n_1 = 3 (number of possible values each coordinate can take)
+
+data UniverseParams = UniverseParams 
+ -- maxIdx,      maxVals
+  { univDims :: Int,
+-- isInjective :: Bool,
+    coordDims :: CubeDims
+  } deriving ( Show, Eq )
+
+-- Then add constraints:
+-- "injective" == no dupes
+-- p = p_0 (number of entities)
+-- "p >= p_0" for any value of p_0
+-- "p <= p_0" for any value of p_0
+-- any constraints of this form: i, j, v_i, v_j are parameters
+-- "someone who is/likes x_i == v_i exists"
+-- "if someone who is/likes x_i == v_i exists, then they are/like x_j == v_j"
+-- "if someone who is/likes x_i == v_i exists, then they aren't/don't like x_j == v_j"
+
+data Comparator = Equ | Leq | Geq deriving (Show, Eq, Enum, Bounded)
+data CountConstraint = CountConstraint { comparator :: Comparator, comparatorVal :: Int } deriving ( Show, Eq )
+data ExistsConstraint = ExistsConstraint { existsDim :: Idx, existsVal :: Val } deriving ( Show, Eq )
+data AffirmConstraint = AffirmConstraint
+  { conditionDim :: Idx, conditionVal :: Val
+  , clauseDim :: Idx, clauseVal :: Val } deriving ( Show, Eq )
+newtype NegativeConstraint  = NegativeConstraint AffirmConstraint
+  deriving (Show, Eq)
+-- data CountConstraint = CountConstraint 
+
+data FactConstraint
+  = Exists ExistsConstraint
+  | Affirm AffirmConstraint
+  | Negative NegativeConstraint
+  | Count CountConstraint
+  deriving (Show, Eq)
+
+checkPointConstraint :: Point -> FactConstraint -> Maybe Bool
+checkPointConstraint point constraint = case constraint of
+  Exists (ExistsConstraint dim val) ->
+    if (point !! toInt dim == val) then Just True else Nothing
+  Affirm (AffirmConstraint ifDim ifVal thenDim thenVal) ->
+    if ( point !! toInt ifDim == ifVal) then 
+      Just (point !! toInt thenDim == thenVal)
+    else Nothing
+  Negative (NegativeConstraint c) -> fmap not (checkPointConstraint point (Affirm c))
+  Count _ -> Nothing
+
+  
 

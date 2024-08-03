@@ -1,0 +1,166 @@
+--
+Name
+Alice
+Bowei
+Carter
+Daisy
+Eli
+Fiona
+Gavin
+Hannah
+Isaac
+Jasmine
+Kai
+Lila
+Mason
+Nora
+Owen
+Parker
+Quinn
+Riley
+Sofia
+Tyler
+--
+Favorite number
+the Number 1
+the Number 2
+the Number 3
+the Number 4
+the Number 5
+the Number 6
+the Number 7
+the Number 8
+the Number 9
+the Number 10
+--
+Favorite color
+Red
+Blue
+Green
+Yellow
+Orange
+Purple
+Pink
+Brown
+Black
+White
+--
+Favorite animal
+Cats
+Dogs
+Birds
+Fish
+Elephants
+Giraffes
+Lions
+Tigers
+Bears
+Monkeys
+--
+Vehicle
+Cars
+Bicycles
+Motorcycles
+Trucks
+Buss
+Airplanes
+Boats
+Trains
+Scooters
+Helicopters
+--
+Favorite food
+Italian food
+Mexican food
+Chinese food
+Indian food
+Japanese food
+French food
+Thai food
+Mediterranean food
+Greek food
+Korean food
+--
+Favorite Music
+Rock music
+Jazz
+Classical music
+Pop music
+Hip-Hop music
+Country music
+Reggae music
+Blues music
+Electronic music
+Folk music
+--
+Favorite tree
+Oak trees
+Pine trees
+Maple trees
+Birch trees
+Cedar trees
+Willow trees
+Redwood trees
+Elm trees
+Cherry trees
+Fir trees
+--
+Favorite drink
+Coffee
+Tea
+Juice
+Soda
+Water
+Milk
+Beer
+Wine
+Smoothie
+Lemonade
+--
+Favorite sport
+Soccer
+Basketball
+Tennis
+Baseball
+Football
+Hockey
+Golf
+Swimming
+Rugby
+Volleyball
+--
+Favorite flower
+Roses
+Tulips
+Lilies
+Orchids
+Daisies
+Sunflowers
+Lavender
+Jasmines
+Peonies
+Irises
+--
+Space location
+the Sun
+the Moon
+the Mercury
+the Venus
+the Earth
+the Mars
+the Jupiter
+the Saturn
+the Uranus
+the Neptune
+--
+Favorite building
+Skyscrapers
+Libraries
+Museums
+Hospitals
+Schools
+Restaurants
+Hotels
+Stadiums
+Banks
+Factories
