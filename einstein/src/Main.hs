@@ -23,7 +23,7 @@ type Variety = [ Point ]
 
 parseFeatureSection :: String -> Feature
 parseFeatureSection section =
-  case lines section of
+  case filter (not . null ) (lines section) of
     [] -> error ("could not parse section" ++ section)
     (d:v) -> Feature d (filter (not . null) v)
 
@@ -45,4 +45,5 @@ main = do
 -- Convert a feature pool to a string for display purposes
 showFeaturePool :: [Feature] -> String
 showFeaturePool features =
-  concatMap show features
+  concatMap showFeature features
+  where showFeature f = (show f ++ "\n")
