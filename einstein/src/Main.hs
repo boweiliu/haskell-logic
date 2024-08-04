@@ -1,8 +1,19 @@
+{-# LANGUAGE TemplateHaskell #-}
 import Data.List.Split (splitOn)
 import Data.Maybe (fromMaybe)
 import Data.List (intercalate)
 import Control.Monad (liftM2)
-import Data.Function.Memoize.Class (Memoizable(..))
+import Data.Function.Memoize (deriveMemoizable, memoize)
+
+type CubeDims = [ Int ] -- len == $d$
+data UniverseParams = UniverseParams 
+ -- maxIdx,      maxVals
+  { numUnivDims :: Int,
+-- isInjective :: Bool,
+    coordDims :: CubeDims
+  } deriving ( Show, Eq, Ord )
+
+$(deriveMemoizable ''UniverseParams)
 
 -- module Main (main) where
 
@@ -70,7 +81,6 @@ parsePoint :: String -> Point
 parsePoint = map (Val . read . return)
   
 
-type CubeDims = [ Int ] -- len == $d$
 type Curve = [ Point ] -- Any number of points
 showCurve :: Curve -> String
 showCurve = intercalate "," . map showPoint
@@ -79,12 +89,7 @@ showCurve = intercalate "," . map showPoint
 -- d = 2 (dimensions)
 -- n_0 = 3, n_1 = 3 (number of possible values each coordinate can take)
 
-data UniverseParams = UniverseParams 
- -- maxIdx,      maxVals
-  { numUnivDims :: Int,
--- isInjective :: Bool,
-    coordDims :: CubeDims
-  } deriving ( Show, Eq )
+
 
 -- Then add constraints:
 -- "injective" == no dupes
@@ -188,6 +193,7 @@ generateAllPoints_ (UniverseParams d ns) = case d of
     in
     liftM2 (:) idxs tailDimPoints
 
+
 generateAllPoints :: UniverseParams -> Curve
 generateAllPoints = memoize generateAllPoints_
 
@@ -289,4 +295,5 @@ example2 :: () -> String
 example2 _ = showCurve (generateCandidatePoints testPuzzle1 [])
  ++ "\n" ++ showCurve (generateCandidatePoints testPuzzle1 [ parsePoint "00" ])
  ++ "\n" ++ showCurve (generateCandidatePoints testPuzzle1 [ parsePoint "10" ])
+
 

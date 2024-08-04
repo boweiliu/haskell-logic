@@ -1,252 +1,482 @@
-	Sun Aug  4 16:06 2024 Time and Allocation Profiling Report  (Final)
+	Sun Aug  4 16:26 2024 Time and Allocation Profiling Report  (Final)
 
 	   einstein +RTS -p -RTS
 
-	total time  =        3.88 secs   (3881 ticks @ 1000 us, 1 processor)
-	total alloc = 5,467,558,632 bytes  (excludes profiling overheads)
+	total time  =        4.31 secs   (4306 ticks @ 1000 us, 1 processor)
+	total alloc = 3,103,442,200 bytes  (excludes profiling overheads)
 
-COST CENTRE               MODULE    SRC                            %time %alloc
+COST CENTRE               MODULE                SRC                                            %time %alloc
 
-sharesCoordWith2          Main      src/Main.hs:(272,1)-(274,86)    51.4   55.6
-generateAllPoints         Main      src/Main.hs:(183,1)-(188,33)    14.6   41.3
-==                        Main      src/Main.hs:58:33-34            12.4    0.0
-collidesWith              Main      src/Main.hs:269:1-43             7.6    0.0
-generateCandidatePoints   Main      src/Main.hs:(244,1)-(249,73)     6.1    0.2
-generateCandidatePoints.\ Main      src/Main.hs:(245,11)-(247,53)    6.0    0.0
-generateAllPoints.idxs    Main      src/Main.hs:186:13-47            0.7    2.0
+sharesCoordWith2          Main                  src/Main.hs:(282,1)-(284,86)                    49.7   97.9
+==                        Main                  src/Main.hs:70:33-34                            12.7    0.0
+finiteLookup.loop         Data.Function.Memoize src/Data/Function/Memoize.hs:(187,5)-(192,52)    9.7    0.0
+generateCandidatePoints   Main                  src/Main.hs:(254,1)-(259,73)                     7.5    0.3
+collidesWith              Main                  src/Main.hs:279:1-43                             5.6    0.0
+generateCandidatePoints.\ Main                  src/Main.hs:(255,11)-(257,53)                    5.6    0.0
+meanFinite                Data.Function.Memoize src/Data/Function/Memoize.hs:(195,1)-(199,19)    3.9    0.0
+finiteLookup.loop.mean    Data.Function.Memoize src/Data/Function/Memoize.hs:188:11-38           2.7    0.0
+generateAllSolutions_     Main                  src/Main.hs:(220,1)-(228,66)                     0.3    1.0
 
 
-                                                                                                                                              individual      inherited
-COST CENTRE                                    MODULE                    SRC                                               no.     entries  %time %alloc   %time %alloc
+                                                                                                                                                   individual      inherited
+COST CENTRE                                        MODULE                    SRC                                               no.      entries  %time %alloc   %time %alloc
 
-MAIN                                           MAIN                      <built-in>                                        260           0    0.0    0.0   100.0  100.0
- CAF                                           GHC.Conc.Signal           <entire-module>                                   495           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.IO.Encoding           <entire-module>                                   460           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.IO.Encoding.Iconv     <entire-module>                                   458           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.IO.Exception          <entire-module>                                   452           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.IO.FD                 <entire-module>                                   451           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.IO.Handle.FD          <entire-module>                                   449           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.IO.Handle.Internals   <entire-module>                                   448           0    0.0    0.0     0.0    0.0
- CAF                                           GHC.Weak.Finalize         <entire-module>                                   414           0    0.0    0.0     0.0    0.0
- CAF:$fEqAffirmConstraint1                     Main                      <no location info>                                284           0    0.0    0.0     0.0    0.0
-  ==                                           Main                      src/Main.hs:58:33-34                              606           1    0.0    0.0     0.0    0.0
- CAF:$fOrdVal7                                 Main                      <no location info>                                294           0    0.0    0.0     0.0    0.0
-  compare                                      Main                      src/Main.hs:58:37-39                              641           1    0.0    0.0     0.0    0.0
- CAF:$fShowAffirmConstraint_$cshowsPrec        Main                      src/Main.hs:59:10-17                              318           0    0.0    0.0     0.0    0.0
-  showsPrec                                    Main                      src/Main.hs:59:10-17                              583           1    0.0    0.0     0.0    0.0
- CAF:$fShowFeature_$cshow                      Main                      src/Main.hs:20:15-18                              317           0    0.0    0.0     0.0    0.0
-  show                                         Main                      src/Main.hs:20:15-18                              564           1    0.0    0.0     0.0    0.0
- CAF:$fShowVal1                                Main                      <no location info>                                319           0    0.0    0.0     0.0    0.0
-  showList                                     Main                      src/Main.hs:59:10-17                              582           0    0.0    0.0     0.0    0.0
- CAF:$fShowVal_$cshowList                      Main                      src/Main.hs:59:10-17                              320           0    0.0    0.0     0.0    0.0
-  showList                                     Main                      src/Main.hs:59:10-17                              580           1    0.0    0.0     0.0    0.0
- CAF:defaultSplitter                           Data.List.Split.Internals src/Data/List/Split/Internals.hs:55:1-15          274           0    0.0    0.0     0.0    0.0
-  defaultSplitter                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(55,1)-(62,5)    535           1    0.0    0.0     0.0    0.0
- CAF:featuresPoolFileName                      Main                      src/Main.hs:15:1-20                               299           0    0.0    0.0     0.0    0.0
-  featuresPoolFileName                         Main                      src/Main.hs:15:1-37                               523           1    0.0    0.0     0.0    0.0
- CAF:main1                                     Main                      <no location info>                                390           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        520           1    0.0    0.0     0.0    0.0
- CAF:main2                                     Main                      <no location info>                                371           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        670           0    0.0    0.0     0.0    0.0
-   example3                                    Main                      src/Main.hs:239:1-61                              671           1    0.0    0.0     0.0    0.0
- CAF:main26                                    Main                      <no location info>                                369           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        675           0    0.0    0.0     0.0    0.0
-   example3                                    Main                      src/Main.hs:239:1-61                              676           0    0.0    0.0     0.0    0.0
-    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      677           0    0.0    0.0     0.0    0.0
- CAF:main28                                    Main                      <no location info>                                386           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        586           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      587           1    0.0    0.0     0.0    0.0
- CAF:main29                                    Main                      <no location info>                                385           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        588           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      589           0    0.0    0.0     0.0    0.0
- CAF:main3                                     Main                      <no location info>                                370           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        672           0    0.0    0.0     0.0    0.0
-   example3                                    Main                      src/Main.hs:239:1-61                              673           0    0.0    0.0     0.0    0.0
-    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      674           1    0.0    0.0     0.0    0.0
- CAF:main30                                    Main                      <no location info>                                383           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        613           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      614           0    0.0    0.0     0.0    0.0
- CAF:main31                                    Main                      <no location info>                                382           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        615           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      616           0    0.0    0.0     0.0    0.0
- CAF:main32                                    Main                      <no location info>                                380           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        645           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      646           0    0.0    0.0     0.0    0.0
- CAF:main33                                    Main                      <no location info>                                379           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        647           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      648           0    0.0    0.0     0.0    0.0
-    showCurve                                  Main                      src/Main.hs:75:1-43                               649           0    0.0    0.0     0.0    0.0
- CAF:main34                                    Main                      <no location info>                                378           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        650           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      651           0    0.0    0.0     0.0    0.0
-    generateCandidatePoints                    Main                      src/Main.hs:(244,1)-(249,73)                      652           1    0.0    0.0     0.0    0.0
-     generateCandidatePoints.\                 Main                      src/Main.hs:(245,11)-(247,53)                     657           4    0.0    0.0     0.0    0.0
-      collidesWith                             Main                      src/Main.hs:269:1-43                              658           4    0.0    0.0     0.0    0.0
-       sharesCoordWith2                        Main                      src/Main.hs:(272,1)-(274,86)                      659           7    0.0    0.0     0.0    0.0
-      falsifiesConstraints                     Main                      src/Main.hs:263:1-75                              664           1    0.0    0.0     0.0    0.0
-       checkPointConstraint                    Main                      src/Main.hs:(120,1)-(129,20)                      665           2    0.0    0.0     0.0    0.0
-        toInt                                  Main                      src/Main.hs:63:1-17                               667           2    0.0    0.0     0.0    0.0
-     generateAllPoints                         Main                      src/Main.hs:(183,1)-(188,33)                      654           3    0.0    0.0     0.0    0.0
-      generateAllPoints.idxs                   Main                      src/Main.hs:186:13-47                             655           2    0.0    0.0     0.0    0.0
-      generateAllPoints.tailDimPoints          Main                      src/Main.hs:185:13-78                             656           2    0.0    0.0     0.0    0.0
-     generateCandidatePoints.maxPoint          Main                      src/Main.hs:249:9-73                              668           1    0.0    0.0     0.0    0.0
-     isFull                                    Main                      src/Main.hs:(253,1)-(259,41)                      653           1    0.0    0.0     0.0    0.0
- CAF:main36                                    Main                      <no location info>                                377           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        661           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      662           0    0.0    0.0     0.0    0.0
-    parsePoint                                 Main                      src/Main.hs:69:1-38                               663           0    0.0    0.0     0.0    0.0
- CAF:main42                                    Main                      <no location info>                                337           0    0.0    0.0     0.0    0.0
-  parsePoint                                   Main                      src/Main.hs:69:1-38                               635           0    0.0    0.0     0.0    0.0
- CAF:main54                                    Main                      <no location info>                                381           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        617           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      618           0    0.0    0.0     0.0    0.0
-    showCurve                                  Main                      src/Main.hs:75:1-43                               619           0    0.0    0.0     0.0    0.0
-     showPoint                                 Main                      src/Main.hs:67:1-36                               643           0    0.0    0.0     0.0    0.0
-      show                                     Main                      src/Main.hs:60:3-25                               644           2    0.0    0.0     0.0    0.0
- CAF:main55                                    Main                      <no location info>                                375           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        620           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      621           0    0.0    0.0     0.0    0.0
-    generateCandidatePoints                    Main                      src/Main.hs:(244,1)-(249,73)                      622           1    0.0    0.0     0.0    0.0
-     generateCandidatePoints.\                 Main                      src/Main.hs:(245,11)-(247,53)                     627           4    0.0    0.0     0.0    0.0
-      collidesWith                             Main                      src/Main.hs:269:1-43                              628           4    0.0    0.0     0.0    0.0
-       sharesCoordWith2                        Main                      src/Main.hs:(272,1)-(274,86)                      629           7    0.0    0.0     0.0    0.0
-      falsifiesConstraints                     Main                      src/Main.hs:263:1-75                              636           1    0.0    0.0     0.0    0.0
-       checkPointConstraint                    Main                      src/Main.hs:(120,1)-(129,20)                      637           2    0.0    0.0     0.0    0.0
-        toInt                                  Main                      src/Main.hs:63:1-17                               639           1    0.0    0.0     0.0    0.0
-     generateAllPoints                         Main                      src/Main.hs:(183,1)-(188,33)                      624           3    0.0    0.0     0.0    0.0
-      generateAllPoints.idxs                   Main                      src/Main.hs:186:13-47                             625           2    0.0    0.0     0.0    0.0
-      generateAllPoints.tailDimPoints          Main                      src/Main.hs:185:13-78                             626           2    0.0    0.0     0.0    0.0
-     generateCandidatePoints.maxPoint          Main                      src/Main.hs:249:9-73                              640           1    0.0    0.0     0.0    0.0
-     isFull                                    Main                      src/Main.hs:(253,1)-(259,41)                      623           1    0.0    0.0     0.0    0.0
- CAF:main57                                    Main                      <no location info>                                374           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        631           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      632           0    0.0    0.0     0.0    0.0
-    parsePoint                                 Main                      src/Main.hs:69:1-38                               634           0    0.0    0.0     0.0    0.0
- CAF:main60                                    Main                      <no location info>                                384           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        590           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      591           0    0.0    0.0     0.0    0.0
-    showCurve                                  Main                      src/Main.hs:75:1-43                               593           0    0.0    0.0     0.0    0.0
-     showPoint                                 Main                      src/Main.hs:67:1-36                               611           0    0.0    0.0     0.0    0.0
-      show                                     Main                      src/Main.hs:60:3-25                               612           6    0.0    0.0     0.0    0.0
- CAF:main61                                    Main                      <no location info>                                372           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        594           0    0.0    0.0     0.0    0.0
-   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      595           0    0.0    0.0     0.0    0.0
-    generateCandidatePoints                    Main                      src/Main.hs:(244,1)-(249,73)                      597           1    0.0    0.0     0.0    0.0
-     generateCandidatePoints.\                 Main                      src/Main.hs:(245,11)-(247,53)                     602           4    0.0    0.0     0.0    0.0
-      collidesWith                             Main                      src/Main.hs:269:1-43                              603           4    0.0    0.0     0.0    0.0
-      falsifiesConstraints                     Main                      src/Main.hs:263:1-75                              604           4    0.0    0.0     0.0    0.0
-       checkPointConstraint                    Main                      src/Main.hs:(120,1)-(129,20)                      605           8    0.0    0.0     0.0    0.0
-        toInt                                  Main                      src/Main.hs:63:1-17                               608           6    0.0    0.0     0.0    0.0
-     generateAllPoints                         Main                      src/Main.hs:(183,1)-(188,33)                      599           3    0.0    0.0     0.0    0.0
-      generateAllPoints.idxs                   Main                      src/Main.hs:186:13-47                             600           2    0.0    0.0     0.0    0.0
-      generateAllPoints.tailDimPoints          Main                      src/Main.hs:185:13-78                             601           2    0.0    0.0     0.0    0.0
-     generateCandidatePoints.maxPoint          Main                      src/Main.hs:249:9-73                              609           1    0.0    0.0     0.0    0.0
-     isFull                                    Main                      src/Main.hs:(253,1)-(259,41)                      598           1    0.0    0.0     0.0    0.0
- CAF:main63                                    Main                      <no location info>                                389           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        571           0    0.0    0.0     0.0    0.0
-   example1                                    Main                      src/Main.hs:173:1-66                              572           1    0.0    0.0     0.0    0.0
- CAF:main64                                    Main                      <no location info>                                388           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        573           0    0.0    0.0     0.0    0.0
-   example1                                    Main                      src/Main.hs:173:1-66                              574           0    0.0    0.0     0.0    0.0
-    showList                                   Main                      src/Main.hs:59:10-17                              581           0    0.0    0.0     0.0    0.0
-     showsPrec                                 Main                      src/Main.hs:59:10-17                              584           0    0.0    0.0     0.0    0.0
-      show                                     Main                      src/Main.hs:60:3-25                               585         180    0.0    0.0     0.0    0.0
- CAF:main65                                    Main                      <no location info>                                387           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        575           0    0.0    0.0     0.0    0.0
-   example1                                    Main                      src/Main.hs:173:1-66                              576           0    0.0    0.0     0.0    0.0
-    generateAllPoints                          Main                      src/Main.hs:(183,1)-(188,33)                      577           4    0.0    0.0     0.0    0.0
-     generateAllPoints.idxs                    Main                      src/Main.hs:186:13-47                             578           3    0.0    0.0     0.0    0.0
-     generateAllPoints.tailDimPoints           Main                      src/Main.hs:185:13-78                             579           3    0.0    0.0     0.0    0.0
- CAF:main72                                    Main                      <no location info>                                358           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        531           0    0.0    0.0     0.0    0.0
-   readFeaturePool                             Main                      src/Main.hs:(32,1)-(35,65)                        532           0    0.0    0.0     0.0    0.0
-    readFeaturePool.sections                   Main                      src/Main.hs:34:7-37                               533           0    0.0    0.0     0.0    0.0
-     splitOn                                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40         534           0    0.0    0.0     0.0    0.0
-      dropDelims                               Data.List.Split.Internals src/Data/List/Split/Internals.hs:320:1-37         536           1    0.0    0.0     0.0    0.0
- CAF:main73                                    Main                      <no location info>                                357           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        543           0    0.0    0.0     0.0    0.0
-   readFeaturePool                             Main                      src/Main.hs:(32,1)-(35,65)                        544           0    0.0    0.0     0.0    0.0
-    readFeaturePool.sections                   Main                      src/Main.hs:34:7-37                               545           0    0.0    0.0     0.0    0.0
-     splitOn                                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40         546           0    0.0    0.0     0.0    0.0
-      onSublist                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70         547           0    0.0    0.0     0.0    0.0
- CAF:main9                                     Main                      <no location info>                                361           0    0.0    0.0     0.1    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        707           0    0.0    0.0     0.1    0.0
-   example3                                    Main                      src/Main.hs:239:1-61                              708           0    0.0    0.0     0.1    0.0
-    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      709           0    0.0    0.0     0.1    0.0
-     showSolutions.l                           Main                      src/Main.hs:236:9-46                              710           0    0.1    0.0     0.1    0.0
- CAF:main_cvs                                  Main                      src/Main.hs:232:15-17                             359           0    0.0    0.0    99.8  100.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        678           0    0.0    0.0    99.8  100.0
-   example3                                    Main                      src/Main.hs:239:1-61                              679           0    0.0    0.0    99.8  100.0
-    generateAllSolutions                       Main                      src/Main.hs:205:1-51                              680           1    0.0    0.0    99.8  100.0
-     generateAllSolutions_                     Main                      src/Main.hs:(210,1)-(218,66)                      682       79745    0.4    0.6    99.8  100.0
-      generateAllSolutions_.isValid            Main                      src/Main.hs:215:3-60                              683       79745    0.1    0.0     0.2    0.1
-       checkCurveConstraints                   Main                      src/Main.hs:158:1-80                              685       79745    0.0    0.0     0.1    0.1
-        checkCurveConstraint                   Main                      src/Main.hs:(132,1)-(142,69)                      686       79745    0.1    0.0     0.1    0.0
-         checkCurveConstraint.len              Main                      src/Main.hs:141:11-28                             687       79745    0.0    0.0     0.0    0.0
-       puzzleData                              Main                      src/Main.hs:197:3-12                              684       79745    0.0    0.0     0.0    0.0
-      generateAllSolutions_.nextPoints         Main                      src/Main.hs:212:3-52                              688       79745    0.0    0.0    99.2   99.2
-       generateCandidatePoints                 Main                      src/Main.hs:(244,1)-(249,73)                      689       79745    6.1    0.2    99.1   99.2
-        generateCandidatePoints.\              Main                      src/Main.hs:(245,11)-(247,53)                     694    20414720    6.0    0.0    77.5   55.6
-         collidesWith                          Main                      src/Main.hs:269:1-43                              695    20414720    7.6    0.0    71.4   55.6
-          sharesCoordWith2                     Main                      src/Main.hs:(272,1)-(274,86)                      700    81208576   51.4   55.6    63.8   55.6
-           ==                                  Main                      src/Main.hs:58:33-34                              701           0   12.4    0.0    12.4    0.0
-         falsifiesConstraints                  Main                      src/Main.hs:263:1-75                              696      242176    0.0    0.0     0.1    0.0
-          checkPointConstraint                 Main                      src/Main.hs:(120,1)-(129,20)                      697      242176    0.0    0.0     0.0    0.0
-         compare                               Main                      src/Main.hs:58:37-39                              702           0    0.1    0.0     0.1    0.0
-        generateAllPoints                      Main                      src/Main.hs:(183,1)-(188,33)                      691      398725   14.6   41.3    15.4   43.4
-         generateAllPoints.idxs                Main                      src/Main.hs:186:13-47                             692      318980    0.7    2.0     0.7    2.0
-         generateAllPoints.tailDimPoints       Main                      src/Main.hs:185:13-78                             693      318980    0.2    0.1     0.2    0.1
-        isFull                                 Main                      src/Main.hs:(253,1)-(259,41)                      690       79745    0.0    0.0     0.0    0.0
-        generateCandidatePoints.maxPoint       Main                      src/Main.hs:249:9-73                              698       65921    0.2    0.0     0.2    0.0
-      generateAllSolutions_.possibleNextCurves Main                      src/Main.hs:214:3-60                              699       79745    0.1    0.2     0.1    0.2
- CAF:main_l                                    Main                      src/Main.hs:236:9                                 363           0    0.0    0.0     0.0    0.0
-  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        703           0    0.0    0.0     0.0    0.0
-   example3                                    Main                      src/Main.hs:239:1-61                              704           0    0.0    0.0     0.0    0.0
-    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      705           0    0.0    0.0     0.0    0.0
-     showSolutions.l                           Main                      src/Main.hs:236:9-46                              706           1    0.0    0.0     0.0    0.0
- CAF:parsePoint                                Main                      src/Main.hs:69:1-10                               340           0    0.0    0.0     0.0    0.0
-  parsePoint                                   Main                      src/Main.hs:69:1-38                               633           1    0.0    0.0     0.0    0.0
- CAF:showCurve                                 Main                      src/Main.hs:75:1-9                                350           0    0.0    0.0     0.0    0.0
-  showCurve                                    Main                      src/Main.hs:75:1-43                               592           1    0.0    0.0     0.0    0.0
- CAF:showPoint                                 Main                      src/Main.hs:67:1-9                                348           0    0.0    0.0     0.0    0.0
-  showPoint                                    Main                      src/Main.hs:67:1-36                               610           1    0.0    0.0     0.0    0.0
- CAF:testPuzzle1                               Main                      src/Main.hs:278:1-11                              301           0    0.0    0.0     0.0    0.0
-  testPuzzle1                                  Main                      src/Main.hs:(278,1)-(282,27)                      596           1    0.0    0.0     0.0    0.0
- CAF:testPuzzle2                               Main                      src/Main.hs:222:1-11                              300           0    0.0    0.0     0.0    0.0
-  testPuzzle2                                  Main                      src/Main.hs:(222,1)-(229,31)                      681           1    0.0    0.0     0.0    0.0
- main                                          Main                      src/Main.hs:(38,1)-(47,49)                        521           0    0.0    0.0     0.1    0.0
-  readFeaturePool                              Main                      src/Main.hs:(32,1)-(35,65)                        522           1    0.0    0.0     0.1    0.0
-   parseFeatureSection                         Main                      src/Main.hs:(25,1)-(28,46)                        566          13    0.0    0.0     0.0    0.0
-   readFeaturePool.sections                    Main                      src/Main.hs:34:7-37                               524           1    0.0    0.0     0.0    0.0
-    splitOn                                    Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40         525           1    0.0    0.0     0.0    0.0
-     onSublist                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70         530           1    0.0    0.0     0.0    0.0
-     split                                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:262:1-68         526           1    0.0    0.0     0.0    0.0
-      fromElem                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:(124,1)-(125,24) 559          14    0.0    0.0     0.0    0.0
-      splitInternal                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:(147,1)-(156,71) 539          14    0.0    0.0     0.0    0.0
-       splitInternal.(...)                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32         541          14    0.0    0.0     0.0    0.0
-        breakDelim                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:(159,1)-(164,34) 548        1453    0.0    0.0     0.0    0.0
-         matchDelim                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:(72,1)-(76,23)   549        1479    0.0    0.0     0.0    0.0
-          matchDelim.\                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:75:55-69         550          26    0.0    0.0     0.0    0.0
-         breakDelim.(...)                      Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48        568        1439    0.0    0.0     0.0    0.0
-         breakDelim.match                      Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48        570        1439    0.0    0.0     0.0    0.0
-         breakDelim.ys                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48        567        1439    0.0    0.0     0.0    0.0
-       splitInternal.match                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32         551          14    0.0    0.0     0.0    0.0
-       splitInternal.toSplitList               Data.List.Split.Internals src/Data/List/Split/Internals.hs:(154,3)-(156,71) 552          14    0.0    0.0     0.0    0.0
-       splitInternal.xs                        Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32         540          14    0.0    0.0     0.0    0.0
-      delimiter                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:22:5-13          542           1    0.0    0.0     0.0    0.0
-      postProcess                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(171,1)-(177,35) 527           1    0.0    0.0     0.0    0.0
-       condensePolicy                          Data.List.Split.Internals src/Data/List/Split/Internals.hs:29:5-18          538           1    0.0    0.0     0.0    0.0
-       delimPolicy                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:24:5-15          529           1    0.0    0.0     0.0    0.0
-       doCondense                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(187,1)-(194,20) 537           1    0.0    0.0     0.0    0.0
-       doDrop                                  Data.List.Split.Internals src/Data/List/Split/Internals.hs:(181,1)-(182,14) 554           1    0.0    0.0     0.0    0.0
-       doMerge                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:(216,1)-(218,14) 528           1    0.0    0.0     0.0    0.0
-       dropFinal                               Data.List.Split.Internals src/Data/List/Split/Internals.hs:(248,1)-(254,17) 557           1    0.0    0.0     0.0    0.0
-       dropInitial                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:(243,1)-(244,19) 555           1    0.0    0.0     0.0    0.0
-       finalBlankPolicy                        Data.List.Split.Internals src/Data/List/Split/Internals.hs:34:5-20          558           1    0.0    0.0     0.0    0.0
-       initBlankPolicy                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:32:5-19          556           1    0.0    0.0     0.0    0.0
-       insertBlanks                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:(200,1)-(202,38) 553           1    0.0    0.0     0.0    0.0
-        insertBlanks'                          Data.List.Split.Internals src/Data/List/Split/Internals.hs:(206,1)-(212,49) 560          27    0.0    0.0     0.0    0.0
-  showFeaturePool                              Main                      src/Main.hs:(51,1)-(53,40)                        562           1    0.0    0.0     0.0    0.0
-   showFeaturePool.showFeature                 Main                      src/Main.hs:53:9-40                               563          13    0.0    0.0     0.0    0.0
-    show                                       Main                      src/Main.hs:20:15-18                              565           0    0.0    0.0     0.0    0.0
-     showsPrec                                 Main                      src/Main.hs:20:15-18                              569          13    0.0    0.0     0.0    0.0
+MAIN                                               MAIN                      <built-in>                                         354           0    0.0    0.0   100.0  100.0
+ CAF                                               GHC.Conc.Signal           <entire-module>                                    663           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.IO.Encoding           <entire-module>                                    628           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.IO.Encoding.Iconv     <entire-module>                                    626           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.IO.Exception          <entire-module>                                    620           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.IO.FD                 <entire-module>                                    619           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.IO.Handle.FD          <entire-module>                                    617           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.IO.Handle.Internals   <entire-module>                                    616           0    0.0    0.0     0.0    0.0
+ CAF                                               GHC.Weak.Finalize         <entire-module>                                    582           0    0.0    0.0     0.0    0.0
+ CAF:$fEqAffirmConstraint1                         Main                      <no location info>                                 447           0    0.0    0.0     0.0    0.0
+  ==                                               Main                      src/Main.hs:70:33-34                               920           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableFinite1                           Data.Function.Memoize     <no location info>                                 375           0    0.0    0.0     0.0    0.0
+  memoize                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              790           0    0.0    0.0     0.0    0.0
+   finiteLookup                                    Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      791           0    0.0    0.0     0.0    0.0
+    finiteLookup.stop0                             Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46              792           0    0.0    0.0     0.0    0.0
+     fromEnum                                      Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             793           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableFinite2                           Data.Function.Memoize     <no location info>                                 374           0    0.0    0.0     0.0    0.0
+  maxBound                                         Data.Function.Memoize     src/Data/Function/Memoize.hs:164:17-23             794           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableFinite3                           Data.Function.Memoize     <no location info>                                 376           0    0.0    0.0     0.0    0.0
+  memoize                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              785           0    0.0    0.0     0.0    0.0
+   finiteLookup                                    Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      786           0    0.0    0.0     0.0    0.0
+    finiteLookup.start0                            Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46              787           0    0.0    0.0     0.0    0.0
+     fromEnum                                      Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             788           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableFinite4                           Data.Function.Memoize     <no location info>                                 373           0    0.0    0.0     0.0    0.0
+  minBound                                         Data.Function.Memoize     src/Data/Function/Memoize.hs:164:17-23             789           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableFinite5                           Data.Function.Memoize     <no location info>                                 389           0    0.0    0.0     0.0    0.0
+  memoize                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              797           0    0.0    0.0     0.0    0.0
+   theFinites                                      Data.Function.Memoize     src/Data/Function/Memoize.hs:(172,1)-(179,38)      798           0    0.0    0.0     0.0    0.0
+    theFinites.loop                                Data.Function.Memoize     src/Data/Function/Memoize.hs:(173,3)-(179,38)      799          67    0.0    0.0     0.0    0.0
+     theFinites.loop.mean                          Data.Function.Memoize     src/Data/Function/Memoize.hs:179:11-38             834          67    0.0    0.0     0.0    0.0
+      meanFinite                                   Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)      835          67    0.0    0.0     0.0    0.0
+       meanFinite.ia                               Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19              837          67    0.0    0.0     0.0    0.0
+        fromEnum                                   Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             838          67    0.0    0.0     0.0    0.0
+       meanFinite.ib                               Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19              840          67    0.0    0.0     0.0    0.0
+        fromEnum                                   Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             841          67    0.0    0.0     0.0    0.0
+       toEnum                                      Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             836          67    0.0    0.0     0.0    0.0
+     pred                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             842          63    0.0    0.0     0.0    0.0
+     succ                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             839           3    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableInt_$cmemoize                     Data.Function.Memoize     src/Data/Function/Memoize.hs:216:31-37             396           0    0.0    0.0     0.0    0.0
+  memoize                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:216:31-53             774           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableInteger_$s$cmemoize               Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              398           0    0.0    0.0     0.0    0.0
+  memoize                                          Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              809           1    0.0    0.0     0.0    0.0
+ CAF:$fMemoizableUniverseParams_$cmemoize          Main                      src/Main.hs:16:2-36                                458           0    0.0    0.0     0.0    0.0
+  memoize                                          Main                      src/Main.hs:16:2-36                                766           1    0.0    0.0     0.0    0.0
+ CAF:$fOrdVal7                                     Main                      <no location info>                                 457           0    0.0    0.0     0.0    0.0
+  compare                                          Main                      src/Main.hs:70:37-39                               986           1    0.0    0.0     0.0    0.0
+ CAF:$fShowAffirmConstraint_$cshowsPrec            Main                      src/Main.hs:71:10-17                               485           0    0.0    0.0     0.0    0.0
+  showsPrec                                        Main                      src/Main.hs:71:10-17                               866           1    0.0    0.0     0.0    0.0
+ CAF:$fShowFeature_$cshow                          Main                      src/Main.hs:32:15-18                               484           0    0.0    0.0     0.0    0.0
+  show                                             Main                      src/Main.hs:32:15-18                               752           1    0.0    0.0     0.0    0.0
+ CAF:$fShowVal1                                    Main                      <no location info>                                 486           0    0.0    0.0     0.0    0.0
+  showList                                         Main                      src/Main.hs:71:10-17                               865           0    0.0    0.0     0.0    0.0
+ CAF:$fShowVal_$cshowList                          Main                      src/Main.hs:71:10-17                               487           0    0.0    0.0     0.0    0.0
+  showList                                         Main                      src/Main.hs:71:10-17                               863           1    0.0    0.0     0.0    0.0
+ CAF:defaultSplitter                               Data.List.Split.Internals src/Data/List/Split/Internals.hs:55:1-15           437           0    0.0    0.0     0.0    0.0
+  defaultSplitter                                  Data.List.Split.Internals src/Data/List/Split/Internals.hs:(55,1)-(62,5)     723           1    0.0    0.0     0.0    0.0
+ CAF:featuresPoolFileName                          Main                      src/Main.hs:27:1-20                                468           0    0.0    0.0     0.0    0.0
+  featuresPoolFileName                             Main                      src/Main.hs:27:1-37                                711           1    0.0    0.0     0.0    0.0
+ CAF:generateAllPoints                             Main                      src/Main.hs:198:1-17                               508           0    0.0    0.0     0.0    0.0
+  generateAllPoints                                Main                      src/Main.hs:198:1-46                               765           1    0.0    0.0     0.0    0.0
+   memoize                                         Main                      src/Main.hs:16:2-36                                767           0    0.0    0.0     0.0    0.0
+    memoize.\                                      Main                      src/Main.hs:16:2-36                                768           1    0.0    0.0     0.0    0.0
+     memoize.\.cache                               Main                      src/Main.hs:16:2-36                                773           1    0.0    0.0     0.0    0.0
+      memoizeFinite                                Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              775          14    0.0    0.0     0.0    0.0
+       memoize                                     Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              778          14    0.0    0.0     0.0    0.0
+        fmap                                       Data.Function.Memoize     src/Data/Function/Memoize.hs:157:13-19             796         902    0.0    0.0     0.0    0.0
+         fromFinite                                Data.Function.Memoize     src/Data/Function/Memoize.hs:163:31-40             833          23    0.0    0.0     0.0    0.0
+         memoize.\.cache.\                         Main                      src/Main.hs:16:2-36                                808           5    0.0    0.0     0.0    0.0
+          memoize                                  Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              810           0    0.0    0.0     0.0    0.0
+           memoize.\                               Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              811          23    0.0    0.0     0.0    0.0
+            memoize.\.cache                        Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              823          13    0.0    0.0     0.0    0.0
+             memoize.\.cache.\                     Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              824          18    0.0    0.0     0.0    0.0
+            memoize.\.cache                        Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              828          10    0.0    0.0     0.0    0.0
+             memoize.\.cache.\.\                   Main                      src/Main.hs:16:2-36                                861           1    0.0    0.0     0.0    0.0
+              generateAllPoints_                   Main                      src/Main.hs:(189,1)-(194,33)                       862           1    0.0    0.0     0.0    0.0
+             memoize.\.cache                       Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              829           0    0.0    0.0     0.0    0.0
+              memoize.\.cache.\                    Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              830           0    0.0    0.0     0.0    0.0
+               memoize.\.cache.\.\                 Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              831          19    0.0    0.0     0.0    0.0
+                memoize.\.cache.\.\                Main                      src/Main.hs:16:2-36                                832           9    0.0    0.0     0.0    0.0
+                 generateAllPoints_                Main                      src/Main.hs:(189,1)-(194,33)                       843           9    0.0    0.0     0.0    0.0
+                  generateAllPoints_.idxs          Main                      src/Main.hs:192:13-47                              844           9    0.0    0.0     0.0    0.0
+                  generateAllPoints_.tailDimPoints Main                      src/Main.hs:191:13-78                              845           9    0.0    0.0     0.0    0.0
+                   memoize.\.\                     Main                      src/Main.hs:16:2-36                                846           9    0.0    0.0     0.0    0.0
+                    finiteLookup                   Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      847          19    0.0    0.0     0.0    0.0
+                     finiteLookup.loop             Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      852        1209    0.0    0.0     0.0    0.0
+                      finiteLookup.loop.mean       Data.Function.Memoize     src/Data/Function/Memoize.hs:188:11-38             853        1209    0.0    0.0     0.0    0.0
+                       meanFinite                  Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)      854        1209    0.0    0.0     0.0    0.0
+                        meanFinite.ia              Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19              855        1209    0.0    0.0     0.0    0.0
+                        meanFinite.ib              Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19              856        1209    0.0    0.0     0.0    0.0
+                      btLeft                       Data.Function.Memoize     src/Data/Function/Memoize.hs:155:5-10              858        1159    0.0    0.0     0.0    0.0
+                      btRight                      Data.Function.Memoize     src/Data/Function/Memoize.hs:155:13-19             857          31    0.0    0.0     0.0    0.0
+                      btValue                      Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              859          19    0.0    0.0     0.0    0.0
+                       memoize.\.\                 Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              860          19    0.0    0.0     0.0    0.0
+                     finiteLookup.a                Data.Function.Memoize     src/Data/Function/Memoize.hs:186:5-24              848          19    0.0    0.0     0.0    0.0
+                      fromEnum                     Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             849          19    0.0    0.0     0.0    0.0
+                     finiteLookup.start0           Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46              850          19    0.0    0.0     0.0    0.0
+                     finiteLookup.stop0            Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46              851          19    0.0    0.0     0.0    0.0
+        theFinites                                 Data.Function.Memoize     src/Data/Function/Memoize.hs:(172,1)-(179,38)      795          14    0.0    0.0     0.0    0.0
+ CAF:main1                                         Main                      <no location info>                                 558           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         708           1    0.0    0.0     0.0    0.0
+ CAF:main2                                         Main                      <no location info>                                 539           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1046           0    0.0    0.0     0.0    0.0
+   example3                                        Main                      src/Main.hs:249:1-61                              1047           1    0.0    0.0     0.0    0.0
+ CAF:main26                                        Main                      <no location info>                                 537           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1051           0    0.0    0.0     0.0    0.0
+   example3                                        Main                      src/Main.hs:249:1-61                              1052           0    0.0    0.0     0.0    0.0
+    showSolutions                                  Main                      src/Main.hs:(242,1)-(246,46)                      1053           0    0.0    0.0     0.0    0.0
+ CAF:main28                                        Main                      <no location info>                                 554           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         869           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       870           1    0.0    0.0     0.0    0.0
+ CAF:main29                                        Main                      <no location info>                                 553           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         871           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       872           0    0.0    0.0     0.0    0.0
+ CAF:main3                                         Main                      <no location info>                                 538           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1048           0    0.0    0.0     0.0    0.0
+   example3                                        Main                      src/Main.hs:249:1-61                              1049           0    0.0    0.0     0.0    0.0
+    showSolutions                                  Main                      src/Main.hs:(242,1)-(246,46)                      1050           1    0.0    0.0     0.0    0.0
+ CAF:main30                                        Main                      <no location info>                                 551           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         927           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       928           0    0.0    0.0     0.0    0.0
+ CAF:main31                                        Main                      <no location info>                                 550           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         929           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       930           0    0.0    0.0     0.0    0.0
+ CAF:main32                                        Main                      <no location info>                                 548           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         990           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       991           0    0.0    0.0     0.0    0.0
+ CAF:main33                                        Main                      <no location info>                                 547           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         992           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       993           0    0.0    0.0     0.0    0.0
+    showCurve                                      Main                      src/Main.hs:86:1-43                                994           0    0.0    0.0     0.0    0.0
+ CAF:main34                                        Main                      <no location info>                                 546           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         995           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       996           0    0.0    0.0     0.0    0.0
+    generateCandidatePoints                        Main                      src/Main.hs:(254,1)-(259,73)                       997           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.\                     Main                      src/Main.hs:(255,11)-(257,53)                     1033           4    0.0    0.0     0.0    0.0
+      collidesWith                                 Main                      src/Main.hs:279:1-43                              1034           4    0.0    0.0     0.0    0.0
+       sharesCoordWith2                            Main                      src/Main.hs:(282,1)-(284,86)                      1035           7    0.0    0.0     0.0    0.0
+      falsifiesConstraints                         Main                      src/Main.hs:273:1-75                              1040           1    0.0    0.0     0.0    0.0
+       checkPointConstraint                        Main                      src/Main.hs:(126,1)-(135,20)                      1041           2    0.0    0.0     0.0    0.0
+        toInt                                      Main                      src/Main.hs:75:1-17                               1043           2    0.0    0.0     0.0    0.0
+     generateCandidatePoints.maxPoint              Main                      src/Main.hs:259:9-73                              1044           1    0.0    0.0     0.0    0.0
+     isFull                                        Main                      src/Main.hs:(263,1)-(269,41)                       998           1    0.0    0.0     0.0    0.0
+     generateAllPoints                             Main                      src/Main.hs:198:1-46                               999           0    0.0    0.0     0.0    0.0
+      memoize                                      Main                      src/Main.hs:16:2-36                               1000           0    0.0    0.0     0.0    0.0
+       memoize.\                                   Main                      src/Main.hs:16:2-36                               1001           0    0.0    0.0     0.0    0.0
+        memoize.\.\                                Main                      src/Main.hs:16:2-36                               1002           1    0.0    0.0     0.0    0.0
+         memoize.\.cache                           Main                      src/Main.hs:16:2-36                               1019           0    0.0    0.0     0.0    0.0
+          memoizeFinite                            Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53             1020           0    0.0    0.0     0.0    0.0
+           memoize                                 Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45             1021           0    0.0    0.0     0.0    0.0
+            finiteLookup                           Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)     1022           0    0.0    0.0     0.0    0.0
+             finiteLookup.loop                     Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)     1023           0    0.0    0.0     0.0    0.0
+              btValue                              Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11             1024           0    0.0    0.0     0.0    0.0
+        memoize.\.cache                            Main                      src/Main.hs:16:2-36                               1003           0    0.0    0.0     0.0    0.0
+         memoizeFinite                             Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53             1004           0    0.0    0.0     0.0    0.0
+          memoize                                  Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45             1005           0    0.0    0.0     0.0    0.0
+           finiteLookup                            Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)     1006           3    0.0    0.0     0.0    0.0
+            finiteLookup.loop                      Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)     1011         192    0.0    0.0     0.0    0.0
+             finiteLookup.loop.mean                Data.Function.Memoize     src/Data/Function/Memoize.hs:188:11-38            1012         192    0.0    0.0     0.0    0.0
+              meanFinite                           Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)     1013         192    0.0    0.0     0.0    0.0
+               meanFinite.ia                       Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19             1014         192    0.0    0.0     0.0    0.0
+               meanFinite.ib                       Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19             1015         192    0.0    0.0     0.0    0.0
+             btLeft                                Data.Function.Memoize     src/Data/Function/Memoize.hs:155:5-10             1017         183    0.0    0.0     0.0    0.0
+             btRight                               Data.Function.Memoize     src/Data/Function/Memoize.hs:155:13-19            1016           6    0.0    0.0     0.0    0.0
+             btValue                               Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11             1018           3    0.0    0.0     0.0    0.0
+            finiteLookup.a                         Data.Function.Memoize     src/Data/Function/Memoize.hs:186:5-24             1007           3    0.0    0.0     0.0    0.0
+             fromEnum                              Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29            1008           3    0.0    0.0     0.0    0.0
+            finiteLookup.start0                    Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46             1009           3    0.0    0.0     0.0    0.0
+            finiteLookup.stop0                     Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46             1010           3    0.0    0.0     0.0    0.0
+           fmap                                    Data.Function.Memoize     src/Data/Function/Memoize.hs:157:13-19            1025           0    0.0    0.0     0.0    0.0
+            memoize.\.cache.\                      Main                      src/Main.hs:16:2-36                               1026           0    0.0    0.0     0.0    0.0
+             memoize                               Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21             1027           0    0.0    0.0     0.0    0.0
+              memoize.\                            Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21             1028           0    0.0    0.0     0.0    0.0
+               memoize.\.\                         Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21             1029           3    0.0    0.0     0.0    0.0
+                finiteLookup                       Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)     1030           0    0.0    0.0     0.0    0.0
+                 finiteLookup.loop                 Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)     1031           0    0.0    0.0     0.0    0.0
+                  btValue                          Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11             1032           0    0.0    0.0     0.0    0.0
+ CAF:main36                                        Main                      <no location info>                                 545           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1037           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                      1038           0    0.0    0.0     0.0    0.0
+    parsePoint                                     Main                      src/Main.hs:81:1-38                               1039           0    0.0    0.0     0.0    0.0
+ CAF:main42                                        Main                      <no location info>                                 500           0    0.0    0.0     0.0    0.0
+  parsePoint                                       Main                      src/Main.hs:81:1-38                                980           0    0.0    0.0     0.0    0.0
+ CAF:main54                                        Main                      <no location info>                                 549           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         931           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       932           0    0.0    0.0     0.0    0.0
+    showCurve                                      Main                      src/Main.hs:86:1-43                                933           0    0.0    0.0     0.0    0.0
+     showPoint                                     Main                      src/Main.hs:79:1-36                                988           0    0.0    0.0     0.0    0.0
+      show                                         Main                      src/Main.hs:72:3-25                                989           2    0.0    0.0     0.0    0.0
+ CAF:main55                                        Main                      <no location info>                                 543           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         934           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       935           0    0.0    0.0     0.0    0.0
+    generateCandidatePoints                        Main                      src/Main.hs:(254,1)-(259,73)                       936           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.\                     Main                      src/Main.hs:(255,11)-(257,53)                      972           4    0.0    0.0     0.0    0.0
+      collidesWith                                 Main                      src/Main.hs:279:1-43                               973           4    0.0    0.0     0.0    0.0
+       sharesCoordWith2                            Main                      src/Main.hs:(282,1)-(284,86)                       974           7    0.0    0.0     0.0    0.0
+      falsifiesConstraints                         Main                      src/Main.hs:273:1-75                               981           1    0.0    0.0     0.0    0.0
+       checkPointConstraint                        Main                      src/Main.hs:(126,1)-(135,20)                       982           2    0.0    0.0     0.0    0.0
+        toInt                                      Main                      src/Main.hs:75:1-17                                984           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.maxPoint              Main                      src/Main.hs:259:9-73                               985           1    0.0    0.0     0.0    0.0
+     isFull                                        Main                      src/Main.hs:(263,1)-(269,41)                       937           1    0.0    0.0     0.0    0.0
+     generateAllPoints                             Main                      src/Main.hs:198:1-46                               938           0    0.0    0.0     0.0    0.0
+      memoize                                      Main                      src/Main.hs:16:2-36                                939           0    0.0    0.0     0.0    0.0
+       memoize.\                                   Main                      src/Main.hs:16:2-36                                940           0    0.0    0.0     0.0    0.0
+        memoize.\.\                                Main                      src/Main.hs:16:2-36                                941           1    0.0    0.0     0.0    0.0
+         memoize.\.cache                           Main                      src/Main.hs:16:2-36                                958           0    0.0    0.0     0.0    0.0
+          memoizeFinite                            Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              959           0    0.0    0.0     0.0    0.0
+           memoize                                 Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              960           0    0.0    0.0     0.0    0.0
+            finiteLookup                           Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      961           0    0.0    0.0     0.0    0.0
+             finiteLookup.loop                     Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      962           0    0.0    0.0     0.0    0.0
+              btValue                              Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              963           0    0.0    0.0     0.0    0.0
+        memoize.\.cache                            Main                      src/Main.hs:16:2-36                                942           0    0.0    0.0     0.0    0.0
+         memoizeFinite                             Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              943           0    0.0    0.0     0.0    0.0
+          memoize                                  Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              944           0    0.0    0.0     0.0    0.0
+           finiteLookup                            Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      945           3    0.0    0.0     0.0    0.0
+            finiteLookup.loop                      Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      950         192    0.0    0.0     0.0    0.0
+             finiteLookup.loop.mean                Data.Function.Memoize     src/Data/Function/Memoize.hs:188:11-38             951         192    0.0    0.0     0.0    0.0
+              meanFinite                           Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)      952         192    0.0    0.0     0.0    0.0
+               meanFinite.ia                       Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19              953         192    0.0    0.0     0.0    0.0
+               meanFinite.ib                       Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19              954         192    0.0    0.0     0.0    0.0
+             btLeft                                Data.Function.Memoize     src/Data/Function/Memoize.hs:155:5-10              956         183    0.0    0.0     0.0    0.0
+             btRight                               Data.Function.Memoize     src/Data/Function/Memoize.hs:155:13-19             955           6    0.0    0.0     0.0    0.0
+             btValue                               Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              957           3    0.0    0.0     0.0    0.0
+            finiteLookup.a                         Data.Function.Memoize     src/Data/Function/Memoize.hs:186:5-24              946           3    0.0    0.0     0.0    0.0
+             fromEnum                              Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             947           3    0.0    0.0     0.0    0.0
+            finiteLookup.start0                    Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46              948           3    0.0    0.0     0.0    0.0
+            finiteLookup.stop0                     Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46              949           3    0.0    0.0     0.0    0.0
+           fmap                                    Data.Function.Memoize     src/Data/Function/Memoize.hs:157:13-19             964           0    0.0    0.0     0.0    0.0
+            memoize.\.cache.\                      Main                      src/Main.hs:16:2-36                                965           0    0.0    0.0     0.0    0.0
+             memoize                               Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              966           0    0.0    0.0     0.0    0.0
+              memoize.\                            Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              967           0    0.0    0.0     0.0    0.0
+               memoize.\.\                         Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              968           3    0.0    0.0     0.0    0.0
+                finiteLookup                       Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      969           0    0.0    0.0     0.0    0.0
+                 finiteLookup.loop                 Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      970           0    0.0    0.0     0.0    0.0
+                  btValue                          Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              971           0    0.0    0.0     0.0    0.0
+ CAF:main57                                        Main                      <no location info>                                 542           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         976           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       977           0    0.0    0.0     0.0    0.0
+    parsePoint                                     Main                      src/Main.hs:81:1-38                                979           0    0.0    0.0     0.0    0.0
+ CAF:main60                                        Main                      <no location info>                                 552           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         873           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       874           0    0.0    0.0     0.0    0.0
+    showCurve                                      Main                      src/Main.hs:86:1-43                                876           0    0.0    0.0     0.0    0.0
+     showPoint                                     Main                      src/Main.hs:79:1-36                                925           0    0.0    0.0     0.0    0.0
+      show                                         Main                      src/Main.hs:72:3-25                                926           6    0.0    0.0     0.0    0.0
+ CAF:main61                                        Main                      <no location info>                                 540           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         877           0    0.0    0.0     0.0    0.0
+   example2                                        Main                      src/Main.hs:(295,1)-(297,79)                       878           0    0.0    0.0     0.0    0.0
+    generateCandidatePoints                        Main                      src/Main.hs:(254,1)-(259,73)                       880           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.\                     Main                      src/Main.hs:(255,11)-(257,53)                      916           4    0.0    0.0     0.0    0.0
+      collidesWith                                 Main                      src/Main.hs:279:1-43                               917           4    0.0    0.0     0.0    0.0
+      falsifiesConstraints                         Main                      src/Main.hs:273:1-75                               918           4    0.0    0.0     0.0    0.0
+       checkPointConstraint                        Main                      src/Main.hs:(126,1)-(135,20)                       919           8    0.0    0.0     0.0    0.0
+        toInt                                      Main                      src/Main.hs:75:1-17                                922           6    0.0    0.0     0.0    0.0
+     generateCandidatePoints.maxPoint              Main                      src/Main.hs:259:9-73                               923           1    0.0    0.0     0.0    0.0
+     isFull                                        Main                      src/Main.hs:(263,1)-(269,41)                       881           1    0.0    0.0     0.0    0.0
+     generateAllPoints                             Main                      src/Main.hs:198:1-46                               882           0    0.0    0.0     0.0    0.0
+      memoize                                      Main                      src/Main.hs:16:2-36                                883           0    0.0    0.0     0.0    0.0
+       memoize.\                                   Main                      src/Main.hs:16:2-36                                884           0    0.0    0.0     0.0    0.0
+        memoize.\.\                                Main                      src/Main.hs:16:2-36                                885           1    0.0    0.0     0.0    0.0
+         memoize.\.cache                           Main                      src/Main.hs:16:2-36                                902           0    0.0    0.0     0.0    0.0
+          memoizeFinite                            Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              903           0    0.0    0.0     0.0    0.0
+           memoize                                 Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              904           0    0.0    0.0     0.0    0.0
+            finiteLookup                           Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      905           0    0.0    0.0     0.0    0.0
+             finiteLookup.loop                     Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      906           0    0.0    0.0     0.0    0.0
+              btValue                              Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              907           0    0.0    0.0     0.0    0.0
+        memoize.\.cache                            Main                      src/Main.hs:16:2-36                                886           0    0.0    0.0     0.0    0.0
+         memoizeFinite                             Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              887           0    0.0    0.0     0.0    0.0
+          memoize                                  Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              888           0    0.0    0.0     0.0    0.0
+           finiteLookup                            Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      889           3    0.0    0.0     0.0    0.0
+            finiteLookup.loop                      Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      894         192    0.0    0.0     0.0    0.0
+             finiteLookup.loop.mean                Data.Function.Memoize     src/Data/Function/Memoize.hs:188:11-38             895         192    0.0    0.0     0.0    0.0
+              meanFinite                           Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)      896         192    0.0    0.0     0.0    0.0
+               meanFinite.ia                       Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19              897         192    0.0    0.0     0.0    0.0
+               meanFinite.ib                       Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19              898         192    0.0    0.0     0.0    0.0
+             btLeft                                Data.Function.Memoize     src/Data/Function/Memoize.hs:155:5-10              900         183    0.0    0.0     0.0    0.0
+             btRight                               Data.Function.Memoize     src/Data/Function/Memoize.hs:155:13-19             899           6    0.0    0.0     0.0    0.0
+             btValue                               Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              901           3    0.0    0.0     0.0    0.0
+            finiteLookup.a                         Data.Function.Memoize     src/Data/Function/Memoize.hs:186:5-24              890           3    0.0    0.0     0.0    0.0
+             fromEnum                              Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             891           3    0.0    0.0     0.0    0.0
+            finiteLookup.start0                    Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46              892           3    0.0    0.0     0.0    0.0
+            finiteLookup.stop0                     Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46              893           3    0.0    0.0     0.0    0.0
+           fmap                                    Data.Function.Memoize     src/Data/Function/Memoize.hs:157:13-19             908           0    0.0    0.0     0.0    0.0
+            memoize.\.cache.\                      Main                      src/Main.hs:16:2-36                                909           0    0.0    0.0     0.0    0.0
+             memoize                               Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              910           0    0.0    0.0     0.0    0.0
+              memoize.\                            Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              911           0    0.0    0.0     0.0    0.0
+               memoize.\.\                         Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              912           3    0.0    0.0     0.0    0.0
+                finiteLookup                       Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      913           0    0.0    0.0     0.0    0.0
+                 finiteLookup.loop                 Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      914           0    0.0    0.0     0.0    0.0
+                  btValue                          Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              915           0    0.0    0.0     0.0    0.0
+ CAF:main63                                        Main                      <no location info>                                 557           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         759           0    0.0    0.0     0.0    0.0
+   example1                                        Main                      src/Main.hs:179:1-66                               760           1    0.0    0.0     0.0    0.0
+ CAF:main64                                        Main                      <no location info>                                 556           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         761           0    0.0    0.0     0.0    0.0
+   example1                                        Main                      src/Main.hs:179:1-66                               762           0    0.0    0.0     0.0    0.0
+    showList                                       Main                      src/Main.hs:71:10-17                               864           0    0.0    0.0     0.0    0.0
+     showsPrec                                     Main                      src/Main.hs:71:10-17                               867           0    0.0    0.0     0.0    0.0
+      show                                         Main                      src/Main.hs:72:3-25                                868         180    0.0    0.0     0.0    0.0
+ CAF:main65                                        Main                      <no location info>                                 555           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         763           0    0.0    0.0     0.0    0.0
+   example1                                        Main                      src/Main.hs:179:1-66                               764           0    0.0    0.0     0.0    0.0
+    generateAllPoints                              Main                      src/Main.hs:198:1-46                               769           0    0.0    0.0     0.0    0.0
+     memoize                                       Main                      src/Main.hs:16:2-36                                770           0    0.0    0.0     0.0    0.0
+      memoize.\                                    Main                      src/Main.hs:16:2-36                                771           0    0.0    0.0     0.0    0.0
+       memoize.\.\                                 Main                      src/Main.hs:16:2-36                                772           1    0.0    0.0     0.0    0.0
+        memoize.\.cache                            Main                      src/Main.hs:16:2-36                                812           0    0.0    0.0     0.0    0.0
+         memoizeFinite                             Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              813           0    0.0    0.0     0.0    0.0
+          memoize                                  Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              814           0    0.0    0.0     0.0    0.0
+           finiteLookup                            Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      815           0    0.0    0.0     0.0    0.0
+            finiteLookup.loop                      Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      816           0    0.0    0.0     0.0    0.0
+             btValue                               Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              817           0    0.0    0.0     0.0    0.0
+       memoize.\.cache                             Main                      src/Main.hs:16:2-36                                776           0    0.0    0.0     0.0    0.0
+        memoizeFinite                              Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53              777           0    0.0    0.0     0.0    0.0
+         memoize                                   Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45              779           0    0.0    0.0     0.0    0.0
+          finiteLookup                             Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      780           4    0.0    0.0     0.0    0.0
+           finiteLookup.loop                       Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      800         251    0.0    0.0     0.0    0.0
+            finiteLookup.loop.mean                 Data.Function.Memoize     src/Data/Function/Memoize.hs:188:11-38             801         251    0.0    0.0     0.0    0.0
+             meanFinite                            Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)      802         251    0.0    0.0     0.0    0.0
+              meanFinite.ia                        Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19              803         251    0.0    0.0     0.0    0.0
+              meanFinite.ib                        Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19              804         251    0.0    0.0     0.0    0.0
+            btLeft                                 Data.Function.Memoize     src/Data/Function/Memoize.hs:155:5-10              806         241    0.0    0.0     0.0    0.0
+            btRight                                Data.Function.Memoize     src/Data/Function/Memoize.hs:155:13-19             805           6    0.0    0.0     0.0    0.0
+            btValue                                Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              807           4    0.0    0.0     0.0    0.0
+           finiteLookup.a                          Data.Function.Memoize     src/Data/Function/Memoize.hs:186:5-24              781           4    0.0    0.0     0.0    0.0
+            fromEnum                               Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29             782           4    0.0    0.0     0.0    0.0
+           finiteLookup.start0                     Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46              783           4    0.0    0.0     0.0    0.0
+           finiteLookup.stop0                      Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46              784           4    0.0    0.0     0.0    0.0
+          fmap                                     Data.Function.Memoize     src/Data/Function/Memoize.hs:157:13-19             818           0    0.0    0.0     0.0    0.0
+           memoize.\.cache.\                       Main                      src/Main.hs:16:2-36                                819           0    0.0    0.0     0.0    0.0
+            memoize                                Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              820           0    0.0    0.0     0.0    0.0
+             memoize.\                             Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              821           0    0.0    0.0     0.0    0.0
+              memoize.\.\                          Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21              822           4    0.0    0.0     0.0    0.0
+               finiteLookup                        Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)      825           0    0.0    0.0     0.0    0.0
+                finiteLookup.loop                  Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)      826           0    0.0    0.0     0.0    0.0
+                 btValue                           Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11              827           0    0.0    0.0     0.0    0.0
+ CAF:main73                                        Main                      <no location info>                                 526           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         719           0    0.0    0.0     0.0    0.0
+   readFeaturePool                                 Main                      src/Main.hs:(44,1)-(47,65)                         720           0    0.0    0.0     0.0    0.0
+    readFeaturePool.sections                       Main                      src/Main.hs:46:7-37                                721           0    0.0    0.0     0.0    0.0
+     splitOn                                       Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40          722           0    0.0    0.0     0.0    0.0
+      dropDelims                                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:320:1-37          724           1    0.0    0.0     0.0    0.0
+ CAF:main74                                        Main                      <no location info>                                 525           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                         731           0    0.0    0.0     0.0    0.0
+   readFeaturePool                                 Main                      src/Main.hs:(44,1)-(47,65)                         732           0    0.0    0.0     0.0    0.0
+    readFeaturePool.sections                       Main                      src/Main.hs:46:7-37                                733           0    0.0    0.0     0.0    0.0
+     splitOn                                       Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40          734           0    0.0    0.0     0.0    0.0
+      onSublist                                    Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70          735           0    0.0    0.0     0.0    0.0
+ CAF:main9                                         Main                      <no location info>                                 529           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1114           0    0.0    0.0     0.0    0.0
+   example3                                        Main                      src/Main.hs:249:1-61                              1115           0    0.0    0.0     0.0    0.0
+    showSolutions                                  Main                      src/Main.hs:(242,1)-(246,46)                      1116           0    0.0    0.0     0.0    0.0
+     showSolutions.l                               Main                      src/Main.hs:246:9-46                              1117           0    0.0    0.0     0.0    0.0
+ CAF:main_cvs                                      Main                      src/Main.hs:242:15-17                              527           0    0.0    0.0    99.9  100.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1054           0    0.0    0.0    99.9  100.0
+   example3                                        Main                      src/Main.hs:249:1-61                              1055           0    0.0    0.0    99.9  100.0
+    generateAllSolutions                           Main                      src/Main.hs:215:1-51                              1056           1    0.0    0.0    99.9  100.0
+     generateAllSolutions_                         Main                      src/Main.hs:(220,1)-(228,66)                      1058       79745    0.3    1.0    99.9  100.0
+      generateAllSolutions_.isValid                Main                      src/Main.hs:225:3-60                              1059       79745    0.0    0.0     0.1    0.1
+       checkCurveConstraints                       Main                      src/Main.hs:164:1-80                              1061       79745    0.0    0.1     0.1    0.1
+        checkCurveConstraint                       Main                      src/Main.hs:(138,1)-(148,69)                      1062       79745    0.0    0.0     0.0    0.0
+         checkCurveConstraint.len                  Main                      src/Main.hs:147:11-28                             1063       79745    0.0    0.0     0.0    0.0
+       puzzleData                                  Main                      src/Main.hs:207:3-12                              1060       79745    0.0    0.0     0.0    0.0
+      generateAllSolutions_.nextPoints             Main                      src/Main.hs:222:3-52                              1064       79745    0.0    0.0    99.4   98.5
+       generateCandidatePoints                     Main                      src/Main.hs:(254,1)-(259,73)                      1065       79745    7.5    0.3    99.3   98.5
+        generateCandidatePoints.\                  Main                      src/Main.hs:(255,11)-(257,53)                     1101    20414720    5.6    0.0    73.8   97.9
+         collidesWith                              Main                      src/Main.hs:279:1-43                              1102    20414720    5.6    0.0    68.0   97.9
+          sharesCoordWith2                         Main                      src/Main.hs:(282,1)-(284,86)                      1107    81208576   49.7   97.9    62.4   97.9
+           ==                                      Main                      src/Main.hs:70:33-34                              1108           0   12.7    0.0    12.7    0.0
+         falsifiesConstraints                      Main                      src/Main.hs:273:1-75                              1103      242176    0.1    0.0     0.1    0.0
+          checkPointConstraint                     Main                      src/Main.hs:(126,1)-(135,20)                      1104      242176    0.0    0.0     0.0    0.0
+         compare                                   Main                      src/Main.hs:70:37-39                              1109           0    0.1    0.0     0.1    0.0
+        isFull                                     Main                      src/Main.hs:(263,1)-(269,41)                      1066       79745    0.0    0.0     0.0    0.0
+        generateCandidatePoints.maxPoint           Main                      src/Main.hs:259:9-73                              1105       65921    0.1    0.1     0.1    0.1
+        generateAllPoints                          Main                      src/Main.hs:198:1-46                              1067           0    0.0    0.0    17.9    0.2
+         memoize                                   Main                      src/Main.hs:16:2-36                               1068           0    0.0    0.0    17.9    0.2
+          memoize.\                                Main                      src/Main.hs:16:2-36                               1069           0    0.0    0.0    17.9    0.2
+           memoize.\.\                             Main                      src/Main.hs:16:2-36                               1070       79745    0.0    0.0     0.0    0.0
+            memoize.\.cache                        Main                      src/Main.hs:16:2-36                               1087           0    0.0    0.0     0.0    0.0
+             memoizeFinite                         Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53             1088           0    0.0    0.0     0.0    0.0
+              memoize                              Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45             1089           0    0.0    0.0     0.0    0.0
+               finiteLookup                        Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)     1090           0    0.0    0.0     0.0    0.0
+                finiteLookup.loop                  Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)     1091           0    0.0    0.0     0.0    0.0
+                 btValue                           Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11             1092           0    0.0    0.0     0.0    0.0
+           memoize.\.cache                         Main                      src/Main.hs:16:2-36                               1071           0    0.0    0.0    17.9    0.2
+            memoizeFinite                          Data.Function.Memoize     src/Data/Function/Memoize.hs:214:1-53             1072           0    0.0    0.0    17.9    0.2
+             memoize                               Data.Function.Memoize     src/Data/Function/Memoize.hs:167:3-45             1073           0    0.1    0.0    17.9    0.2
+              finiteLookup                         Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)     1074      398725    0.5    0.2    17.6    0.2
+               finiteLookup.loop                   Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)     1079    25518400    9.7    0.0    17.0    0.0
+                finiteLookup.loop.mean             Data.Function.Memoize     src/Data/Function/Memoize.hs:188:11-38            1080    25518400    2.7    0.0     6.7    0.0
+                 meanFinite                        Data.Function.Memoize     src/Data/Function/Memoize.hs:(195,1)-(199,19)     1081    25518400    3.9    0.0     3.9    0.0
+                  meanFinite.ia                    Data.Function.Memoize     src/Data/Function/Memoize.hs:198:5-19             1082    25518400    0.0    0.0     0.0    0.0
+                  meanFinite.ib                    Data.Function.Memoize     src/Data/Function/Memoize.hs:199:5-19             1083    25518400    0.0    0.0     0.0    0.0
+                btLeft                             Data.Function.Memoize     src/Data/Function/Memoize.hs:155:5-10             1085    24322225    0.5    0.0     0.5    0.0
+                btRight                            Data.Function.Memoize     src/Data/Function/Memoize.hs:155:13-19            1084      797450    0.0    0.0     0.0    0.0
+                btValue                            Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11             1086      398725    0.1    0.0     0.1    0.0
+               finiteLookup.a                      Data.Function.Memoize     src/Data/Function/Memoize.hs:186:5-24             1075      398725    0.0    0.0     0.1    0.0
+                fromEnum                           Data.Function.Memoize     src/Data/Function/Memoize.hs:164:26-29            1076      398725    0.0    0.0     0.0    0.0
+               finiteLookup.start0                 Data.Function.Memoize     src/Data/Function/Memoize.hs:184:5-46             1077      398725    0.0    0.0     0.0    0.0
+               finiteLookup.stop0                  Data.Function.Memoize     src/Data/Function/Memoize.hs:185:5-46             1078      398725    0.0    0.0     0.0    0.0
+              fmap                                 Data.Function.Memoize     src/Data/Function/Memoize.hs:157:13-19            1093           0    0.0    0.0     0.2    0.0
+               memoize.\.cache.\                   Main                      src/Main.hs:16:2-36                               1094           0    0.0    0.0     0.2    0.0
+                memoize                            Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21             1095           0    0.0    0.0     0.2    0.0
+                 memoize.\                         Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21             1096           0    0.0    0.0     0.2    0.0
+                  memoize.\.\                      Data.Function.Memoize     src/Data/Function/Memoize.hs:233:1-21             1097      398725    0.1    0.0     0.2    0.0
+                   finiteLookup                    Data.Function.Memoize     src/Data/Function/Memoize.hs:(182,1)-(192,52)     1098           0    0.0    0.0     0.1    0.0
+                    finiteLookup.loop              Data.Function.Memoize     src/Data/Function/Memoize.hs:(187,5)-(192,52)     1099           0    0.0    0.0     0.1    0.0
+                     btValue                       Data.Function.Memoize     src/Data/Function/Memoize.hs:154:5-11             1100           0    0.1    0.0     0.1    0.0
+      generateAllSolutions_.possibleNextCurves     Main                      src/Main.hs:224:3-60                              1106       79745    0.1    0.3     0.1    0.3
+ CAF:main_l                                        Main                      src/Main.hs:246:9                                  531           0    0.0    0.0     0.0    0.0
+  main                                             Main                      src/Main.hs:(50,1)-(59,49)                        1110           0    0.0    0.0     0.0    0.0
+   example3                                        Main                      src/Main.hs:249:1-61                              1111           0    0.0    0.0     0.0    0.0
+    showSolutions                                  Main                      src/Main.hs:(242,1)-(246,46)                      1112           0    0.0    0.0     0.0    0.0
+     showSolutions.l                               Main                      src/Main.hs:246:9-46                              1113           1    0.0    0.0     0.0    0.0
+ CAF:parsePoint                                    Main                      src/Main.hs:81:1-10                                503           0    0.0    0.0     0.0    0.0
+  parsePoint                                       Main                      src/Main.hs:81:1-38                                978           1    0.0    0.0     0.0    0.0
+ CAF:showCurve                                     Main                      src/Main.hs:86:1-9                                 518           0    0.0    0.0     0.0    0.0
+  showCurve                                        Main                      src/Main.hs:86:1-43                                875           1    0.0    0.0     0.0    0.0
+ CAF:showPoint                                     Main                      src/Main.hs:79:1-9                                 516           0    0.0    0.0     0.0    0.0
+  showPoint                                        Main                      src/Main.hs:79:1-36                                924           1    0.0    0.0     0.0    0.0
+ CAF:testPuzzle1                                   Main                      src/Main.hs:288:1-11                               470           0    0.0    0.0     0.0    0.0
+  testPuzzle1                                      Main                      src/Main.hs:(288,1)-(292,27)                       879           1    0.0    0.0     0.0    0.0
+ CAF:testPuzzle2                                   Main                      src/Main.hs:232:1-11                               469           0    0.0    0.0     0.0    0.0
+  testPuzzle2                                      Main                      src/Main.hs:(232,1)-(239,31)                      1057           1    0.0    0.0     0.0    0.0
+ main                                              Main                      src/Main.hs:(50,1)-(59,49)                         709           0    0.0    0.0     0.1    0.0
+  readFeaturePool                                  Main                      src/Main.hs:(44,1)-(47,65)                         710           1    0.0    0.0     0.1    0.0
+   parseFeatureSection                             Main                      src/Main.hs:(37,1)-(40,46)                         754          13    0.0    0.0     0.0    0.0
+   readFeaturePool.sections                        Main                      src/Main.hs:46:7-37                                712           1    0.0    0.0     0.0    0.0
+    splitOn                                        Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40          713           1    0.0    0.0     0.0    0.0
+     onSublist                                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70          718           1    0.0    0.0     0.0    0.0
+     split                                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:262:1-68          714           1    0.0    0.0     0.0    0.0
+      fromElem                                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:(124,1)-(125,24)  747          14    0.0    0.0     0.0    0.0
+      splitInternal                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:(147,1)-(156,71)  727          14    0.0    0.0     0.0    0.0
+       splitInternal.(...)                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32          729          14    0.0    0.0     0.0    0.0
+        breakDelim                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:(159,1)-(164,34)  736        1453    0.0    0.0     0.0    0.0
+         matchDelim                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:(72,1)-(76,23)    737        1479    0.0    0.0     0.0    0.0
+          matchDelim.\                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:75:55-69          738          26    0.0    0.0     0.0    0.0
+         breakDelim.(...)                          Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48         756        1439    0.0    0.0     0.0    0.0
+         breakDelim.match                          Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48         758        1439    0.0    0.0     0.0    0.0
+         breakDelim.ys                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48         755        1439    0.0    0.0     0.0    0.0
+       splitInternal.match                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32          739          14    0.0    0.0     0.0    0.0
+       splitInternal.toSplitList                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:(154,3)-(156,71)  740          14    0.0    0.0     0.0    0.0
+       splitInternal.xs                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32          728          14    0.0    0.0     0.0    0.0
+      delimiter                                    Data.List.Split.Internals src/Data/List/Split/Internals.hs:22:5-13           730           1    0.0    0.0     0.0    0.0
+      postProcess                                  Data.List.Split.Internals src/Data/List/Split/Internals.hs:(171,1)-(177,35)  715           1    0.0    0.0     0.0    0.0
+       condensePolicy                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:29:5-18           726           1    0.0    0.0     0.0    0.0
+       delimPolicy                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:24:5-15           717           1    0.0    0.0     0.0    0.0
+       doCondense                                  Data.List.Split.Internals src/Data/List/Split/Internals.hs:(187,1)-(194,20)  725           1    0.0    0.0     0.0    0.0
+       doDrop                                      Data.List.Split.Internals src/Data/List/Split/Internals.hs:(181,1)-(182,14)  742           1    0.0    0.0     0.0    0.0
+       doMerge                                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:(216,1)-(218,14)  716           1    0.0    0.0     0.0    0.0
+       dropFinal                                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:(248,1)-(254,17)  745           1    0.0    0.0     0.0    0.0
+       dropInitial                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:(243,1)-(244,19)  743           1    0.0    0.0     0.0    0.0
+       finalBlankPolicy                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:34:5-20           746           1    0.0    0.0     0.0    0.0
+       initBlankPolicy                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:32:5-19           744           1    0.0    0.0     0.0    0.0
+       insertBlanks                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:(200,1)-(202,38)  741           1    0.0    0.0     0.0    0.0
+        insertBlanks'                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(206,1)-(212,49)  748          27    0.0    0.0     0.0    0.0
+  showFeaturePool                                  Main                      src/Main.hs:(63,1)-(65,40)                         750           1    0.0    0.0     0.0    0.0
+   showFeaturePool.showFeature                     Main                      src/Main.hs:65:9-40                                751          13    0.0    0.0     0.0    0.0
+    show                                           Main                      src/Main.hs:32:15-18                               753           0    0.0    0.0     0.0    0.0
+     showsPrec                                     Main                      src/Main.hs:32:15-18                               757          13    0.0    0.0     0.0    0.0
