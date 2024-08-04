@@ -252,9 +252,12 @@ example3 _ = showSolutions (generateAllSolutions testPuzzle2)
 -- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
 generateCandidatePoints :: Puzzle -> Curve -> [ Point ]
 generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull puzz cuv) then [] else filter 
-  ( \p -> not (p `collidesWith` cuv) 
+  ( \p -> True
+    -- assumes curves are ordered reverse lexicographically, which is the natural way
+    && fromMaybe True (liftM2 (>=) (Just p) maxPoint)
+    && not (p `collidesWith` cuv) 
     && not (p `falsifiesConstraints` constraints) 
-    && fromMaybe True (liftM2 (>=) (Just p) maxPoint) ) -- assumes curves are z-first
+  )
   (generateAllPoints univParams)
   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
 
@@ -282,7 +285,8 @@ sharesCoordWith2 :: Point -> Point -> Bool
 sharesCoordWith2 p1 p2 = case p1 of
   [] -> False
   _ -> if ((head p1) == (head p2)) then True else sharesCoordWith2 (tail p1) (tail p2)
-
+-- sharesCoordWith2 p1 p2 = let diffs = zip p1 p2
+--  in (any id . map (\(x,y) -> x == y)) diffs
 
 testPuzzle1 :: Puzzle
 testPuzzle1 = (Puzzle [
