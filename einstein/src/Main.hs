@@ -199,7 +199,6 @@ data Puzzle = Puzzle {
 } deriving (Show, Eq)
 
   
-
 -- how to list all curves that solve a puzzle?
 -- DFS-y. WLOG your curves are lexicographical, so start with a partial curve and a list of partialCurves you've already looked at (since points are unordered in a curve). 
 generateAllSolutions :: Puzzle -> [ Curve ]
@@ -230,7 +229,10 @@ testPuzzle2 = (Puzzle [
   (UniverseParams 4 [4,4,4,4]))
 
 showSolutions :: [Curve] -> String
-showSolutions cvs = l ++ "\n" ++ (intercalate "\n" . map showCurve) cvs ++ "\n" ++ l
+showSolutions cvs = 
+  if (length cvs >= 100) then
+      l
+    else l ++ "\n" ++ (intercalate "\n" . map showCurve) cvs ++ "\n" ++ l
   where l = show (length cvs) ++ " solutions."
 
 example3 :: () -> String
