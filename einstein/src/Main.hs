@@ -221,13 +221,17 @@ generateAllSolutions_ puz currCurve = let
 
 testPuzzle2 :: Puzzle
 testPuzzle2 = (Puzzle [
-    (Count (CountConstraint Equ 2))
+    (Count (CountConstraint Geq 1))
     -- , (Affirm (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
+    -- , Negative (NegativeConstraint (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
+    -- , Exact (ExactConstraint (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
+    -- ,Exists (ExistsConstraint (Idx 0) (Val 0))
   ]
-  (UniverseParams 2 [2,2]))
+  (UniverseParams 4 [4,4,4,4]))
 
 showSolutions :: [Curve] -> String
-showSolutions cvs = (show (length cvs)) ++ " solutions:\n" ++ (intercalate "\n" . map showCurve) cvs
+showSolutions cvs = l ++ "\n" ++ (intercalate "\n" . map showCurve) cvs ++ "\n" ++ l
+  where l = show (length cvs) ++ " solutions."
 
 example3 :: () -> String
 example3 _ = showSolutions (generateAllSolutions testPuzzle2)
