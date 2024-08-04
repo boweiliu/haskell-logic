@@ -78,6 +78,7 @@ data UniverseParams = UniverseParams
 -- any constraints of this form: i, j, v_i, v_j are parameters
 -- "someone who is/likes x_i == v_i exists"
 -- "if someone who is/likes x_i == v_i exists, then they are/like x_j == v_j"
+-- "someone who is/likes x_i == v_i exists, and they are/like x_j == v_j"
 -- "if someone who is/likes x_i == v_i exists, then they aren't/don't like x_j == v_j"
 
 data Comparator = Equ | Leq | Geq deriving (Show, Eq, Enum, Bounded)
@@ -86,6 +87,8 @@ data ExistsConstraint = ExistsConstraint { existsDim :: Idx, existsVal :: Val } 
 data AffirmConstraint = AffirmConstraint
   { conditionDim :: Idx, conditionVal :: Val
   , clauseDim :: Idx, clauseVal :: Val } deriving ( Show, Eq )
+newtype ExactConstraint  = ExactConstraint AffirmConstraint
+  deriving (Show, Eq)
 newtype NegativeConstraint  = NegativeConstraint AffirmConstraint
   deriving (Show, Eq)
 -- data CountConstraint = CountConstraint 
@@ -93,6 +96,7 @@ newtype NegativeConstraint  = NegativeConstraint AffirmConstraint
 data FactConstraint
   = Exists ExistsConstraint
   | Affirm AffirmConstraint
+  | Exact ExactConstraint
   | Negative NegativeConstraint
   | Count CountConstraint
   deriving (Show, Eq)
@@ -105,13 +109,15 @@ checkPointConstraint point constraint = case constraint of
     if ( point !! toInt ifDim == ifVal) then 
       Just (point !! toInt thenDim == thenVal)
     else Nothing
-  Negative (NegativeConstraint c) -> fmap not (checkPointConstraint point (Affirm c))
+  Exact (ExactConstraint ce) -> checkPointConstraint point (Affirm ce)
+  Negative (NegativeConstraint cn) -> fmap not (checkPointConstraint point (Affirm cn))
   Count _ -> Nothing
 
 checkCurveConstraint :: Curve -> FactConstraint -> Bool  
 checkCurveConstraint curve constraint = case constraint of 
   Exists _ -> (foldr (||) False . map (fromMaybe False))  pointChecks
   Affirm _ -> (foldr (&&) True . map (fromMaybe True))  pointChecks
+  Exact _ -> (foldr (||) False . map (fromMaybe False))  pointChecks
   Negative _ -> (foldr (&&) True . map (fromMaybe True))  pointChecks
   Count (CountConstraint c cval) -> case c of
     Equ -> len == cval
@@ -133,7 +139,7 @@ testData4 = Negative (NegativeConstraint (AffirmConstraint (Idx 0) (Val 10) (Idx
 example1 :: () -> String
 -- example1 _ = show (checkCurveConstraint testCurve2 testData4)
 -- example1 _ = show (checkPointConstraint (testCurve2 !! 0) testData3)
-example1 _ = show (generateAllPoints (UniverseParams 3 [3,4,5]))
+example1 _ = show ((generateAllPoints (UniverseParams 3 [3,4,5])))
 
 
 -- i want to generate all valid curves in a UniverseParams
@@ -142,7 +148,7 @@ example1 _ = show (generateAllPoints (UniverseParams 3 [3,4,5]))
 -- then filter by satisfying d-dim injectivity (no repeated coordinate values)
 -- data UniverseParams = UniverseParams 
 
-generateAllPoints :: UniverseParams -> [ Point ]
+generateAllPoints :: UniverseParams -> Curve
 generateAllPoints (UniverseParams d ns) = case d of
   0 -> [ [] ]
   _ -> let  tailDimPoints = generateAllPoints (UniverseParams (d-1) (tail ns))
@@ -150,5 +156,10 @@ generateAllPoints (UniverseParams d ns) = case d of
     in
     liftA2 (:) idxs tailDimPoints
 
+-- generateAllCurves :: UniverseParams -> [ Curve ]
+-- do i even need to write this
+
+
+-- first, actually, just manually concoct a set of constraints
 
 
