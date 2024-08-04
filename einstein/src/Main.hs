@@ -2,6 +2,7 @@ import Data.List.Split (splitOn)
 import Data.Maybe (fromMaybe)
 import Data.List (intercalate)
 import Control.Monad (liftM2)
+import Data.Function.Memoize.Class (Memoizable(..))
 
 -- module Main (main) where
 
@@ -179,13 +180,16 @@ example1 _ = show ((generateAllPoints (UniverseParams 3 [3,4,5])))
 -- then filter by satisfying d-dim injectivity (no repeated coordinate values)
 -- data UniverseParams = UniverseParams 
 
-generateAllPoints :: UniverseParams -> Curve
-generateAllPoints (UniverseParams d ns) = case d of
+generateAllPoints_ :: UniverseParams -> Curve
+generateAllPoints_ (UniverseParams d ns) = case d of
   0 -> [ [] ]
   _ -> let  tailDimPoints = generateAllPoints (UniverseParams (d-1) (tail ns))
             idxs = map Val [0 .. (head ns - 1)]
     in
     liftM2 (:) idxs tailDimPoints
+
+generateAllPoints :: UniverseParams -> Curve
+generateAllPoints = memoize generateAllPoints_
 
 
 -- generateAllCurves :: UniverseParams -> [ Curve ]
