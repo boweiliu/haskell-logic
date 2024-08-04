@@ -1,0 +1,252 @@
+	Sun Aug  4 16:06 2024 Time and Allocation Profiling Report  (Final)
+
+	   einstein +RTS -p -RTS
+
+	total time  =        3.88 secs   (3881 ticks @ 1000 us, 1 processor)
+	total alloc = 5,467,558,632 bytes  (excludes profiling overheads)
+
+COST CENTRE               MODULE    SRC                            %time %alloc
+
+sharesCoordWith2          Main      src/Main.hs:(272,1)-(274,86)    51.4   55.6
+generateAllPoints         Main      src/Main.hs:(183,1)-(188,33)    14.6   41.3
+==                        Main      src/Main.hs:58:33-34            12.4    0.0
+collidesWith              Main      src/Main.hs:269:1-43             7.6    0.0
+generateCandidatePoints   Main      src/Main.hs:(244,1)-(249,73)     6.1    0.2
+generateCandidatePoints.\ Main      src/Main.hs:(245,11)-(247,53)    6.0    0.0
+generateAllPoints.idxs    Main      src/Main.hs:186:13-47            0.7    2.0
+
+
+                                                                                                                                              individual      inherited
+COST CENTRE                                    MODULE                    SRC                                               no.     entries  %time %alloc   %time %alloc
+
+MAIN                                           MAIN                      <built-in>                                        260           0    0.0    0.0   100.0  100.0
+ CAF                                           GHC.Conc.Signal           <entire-module>                                   495           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.IO.Encoding           <entire-module>                                   460           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.IO.Encoding.Iconv     <entire-module>                                   458           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.IO.Exception          <entire-module>                                   452           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.IO.FD                 <entire-module>                                   451           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.IO.Handle.FD          <entire-module>                                   449           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.IO.Handle.Internals   <entire-module>                                   448           0    0.0    0.0     0.0    0.0
+ CAF                                           GHC.Weak.Finalize         <entire-module>                                   414           0    0.0    0.0     0.0    0.0
+ CAF:$fEqAffirmConstraint1                     Main                      <no location info>                                284           0    0.0    0.0     0.0    0.0
+  ==                                           Main                      src/Main.hs:58:33-34                              606           1    0.0    0.0     0.0    0.0
+ CAF:$fOrdVal7                                 Main                      <no location info>                                294           0    0.0    0.0     0.0    0.0
+  compare                                      Main                      src/Main.hs:58:37-39                              641           1    0.0    0.0     0.0    0.0
+ CAF:$fShowAffirmConstraint_$cshowsPrec        Main                      src/Main.hs:59:10-17                              318           0    0.0    0.0     0.0    0.0
+  showsPrec                                    Main                      src/Main.hs:59:10-17                              583           1    0.0    0.0     0.0    0.0
+ CAF:$fShowFeature_$cshow                      Main                      src/Main.hs:20:15-18                              317           0    0.0    0.0     0.0    0.0
+  show                                         Main                      src/Main.hs:20:15-18                              564           1    0.0    0.0     0.0    0.0
+ CAF:$fShowVal1                                Main                      <no location info>                                319           0    0.0    0.0     0.0    0.0
+  showList                                     Main                      src/Main.hs:59:10-17                              582           0    0.0    0.0     0.0    0.0
+ CAF:$fShowVal_$cshowList                      Main                      src/Main.hs:59:10-17                              320           0    0.0    0.0     0.0    0.0
+  showList                                     Main                      src/Main.hs:59:10-17                              580           1    0.0    0.0     0.0    0.0
+ CAF:defaultSplitter                           Data.List.Split.Internals src/Data/List/Split/Internals.hs:55:1-15          274           0    0.0    0.0     0.0    0.0
+  defaultSplitter                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(55,1)-(62,5)    535           1    0.0    0.0     0.0    0.0
+ CAF:featuresPoolFileName                      Main                      src/Main.hs:15:1-20                               299           0    0.0    0.0     0.0    0.0
+  featuresPoolFileName                         Main                      src/Main.hs:15:1-37                               523           1    0.0    0.0     0.0    0.0
+ CAF:main1                                     Main                      <no location info>                                390           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        520           1    0.0    0.0     0.0    0.0
+ CAF:main2                                     Main                      <no location info>                                371           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        670           0    0.0    0.0     0.0    0.0
+   example3                                    Main                      src/Main.hs:239:1-61                              671           1    0.0    0.0     0.0    0.0
+ CAF:main26                                    Main                      <no location info>                                369           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        675           0    0.0    0.0     0.0    0.0
+   example3                                    Main                      src/Main.hs:239:1-61                              676           0    0.0    0.0     0.0    0.0
+    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      677           0    0.0    0.0     0.0    0.0
+ CAF:main28                                    Main                      <no location info>                                386           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        586           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      587           1    0.0    0.0     0.0    0.0
+ CAF:main29                                    Main                      <no location info>                                385           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        588           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      589           0    0.0    0.0     0.0    0.0
+ CAF:main3                                     Main                      <no location info>                                370           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        672           0    0.0    0.0     0.0    0.0
+   example3                                    Main                      src/Main.hs:239:1-61                              673           0    0.0    0.0     0.0    0.0
+    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      674           1    0.0    0.0     0.0    0.0
+ CAF:main30                                    Main                      <no location info>                                383           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        613           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      614           0    0.0    0.0     0.0    0.0
+ CAF:main31                                    Main                      <no location info>                                382           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        615           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      616           0    0.0    0.0     0.0    0.0
+ CAF:main32                                    Main                      <no location info>                                380           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        645           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      646           0    0.0    0.0     0.0    0.0
+ CAF:main33                                    Main                      <no location info>                                379           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        647           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      648           0    0.0    0.0     0.0    0.0
+    showCurve                                  Main                      src/Main.hs:75:1-43                               649           0    0.0    0.0     0.0    0.0
+ CAF:main34                                    Main                      <no location info>                                378           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        650           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      651           0    0.0    0.0     0.0    0.0
+    generateCandidatePoints                    Main                      src/Main.hs:(244,1)-(249,73)                      652           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.\                 Main                      src/Main.hs:(245,11)-(247,53)                     657           4    0.0    0.0     0.0    0.0
+      collidesWith                             Main                      src/Main.hs:269:1-43                              658           4    0.0    0.0     0.0    0.0
+       sharesCoordWith2                        Main                      src/Main.hs:(272,1)-(274,86)                      659           7    0.0    0.0     0.0    0.0
+      falsifiesConstraints                     Main                      src/Main.hs:263:1-75                              664           1    0.0    0.0     0.0    0.0
+       checkPointConstraint                    Main                      src/Main.hs:(120,1)-(129,20)                      665           2    0.0    0.0     0.0    0.0
+        toInt                                  Main                      src/Main.hs:63:1-17                               667           2    0.0    0.0     0.0    0.0
+     generateAllPoints                         Main                      src/Main.hs:(183,1)-(188,33)                      654           3    0.0    0.0     0.0    0.0
+      generateAllPoints.idxs                   Main                      src/Main.hs:186:13-47                             655           2    0.0    0.0     0.0    0.0
+      generateAllPoints.tailDimPoints          Main                      src/Main.hs:185:13-78                             656           2    0.0    0.0     0.0    0.0
+     generateCandidatePoints.maxPoint          Main                      src/Main.hs:249:9-73                              668           1    0.0    0.0     0.0    0.0
+     isFull                                    Main                      src/Main.hs:(253,1)-(259,41)                      653           1    0.0    0.0     0.0    0.0
+ CAF:main36                                    Main                      <no location info>                                377           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        661           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      662           0    0.0    0.0     0.0    0.0
+    parsePoint                                 Main                      src/Main.hs:69:1-38                               663           0    0.0    0.0     0.0    0.0
+ CAF:main42                                    Main                      <no location info>                                337           0    0.0    0.0     0.0    0.0
+  parsePoint                                   Main                      src/Main.hs:69:1-38                               635           0    0.0    0.0     0.0    0.0
+ CAF:main54                                    Main                      <no location info>                                381           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        617           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      618           0    0.0    0.0     0.0    0.0
+    showCurve                                  Main                      src/Main.hs:75:1-43                               619           0    0.0    0.0     0.0    0.0
+     showPoint                                 Main                      src/Main.hs:67:1-36                               643           0    0.0    0.0     0.0    0.0
+      show                                     Main                      src/Main.hs:60:3-25                               644           2    0.0    0.0     0.0    0.0
+ CAF:main55                                    Main                      <no location info>                                375           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        620           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      621           0    0.0    0.0     0.0    0.0
+    generateCandidatePoints                    Main                      src/Main.hs:(244,1)-(249,73)                      622           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.\                 Main                      src/Main.hs:(245,11)-(247,53)                     627           4    0.0    0.0     0.0    0.0
+      collidesWith                             Main                      src/Main.hs:269:1-43                              628           4    0.0    0.0     0.0    0.0
+       sharesCoordWith2                        Main                      src/Main.hs:(272,1)-(274,86)                      629           7    0.0    0.0     0.0    0.0
+      falsifiesConstraints                     Main                      src/Main.hs:263:1-75                              636           1    0.0    0.0     0.0    0.0
+       checkPointConstraint                    Main                      src/Main.hs:(120,1)-(129,20)                      637           2    0.0    0.0     0.0    0.0
+        toInt                                  Main                      src/Main.hs:63:1-17                               639           1    0.0    0.0     0.0    0.0
+     generateAllPoints                         Main                      src/Main.hs:(183,1)-(188,33)                      624           3    0.0    0.0     0.0    0.0
+      generateAllPoints.idxs                   Main                      src/Main.hs:186:13-47                             625           2    0.0    0.0     0.0    0.0
+      generateAllPoints.tailDimPoints          Main                      src/Main.hs:185:13-78                             626           2    0.0    0.0     0.0    0.0
+     generateCandidatePoints.maxPoint          Main                      src/Main.hs:249:9-73                              640           1    0.0    0.0     0.0    0.0
+     isFull                                    Main                      src/Main.hs:(253,1)-(259,41)                      623           1    0.0    0.0     0.0    0.0
+ CAF:main57                                    Main                      <no location info>                                374           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        631           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      632           0    0.0    0.0     0.0    0.0
+    parsePoint                                 Main                      src/Main.hs:69:1-38                               634           0    0.0    0.0     0.0    0.0
+ CAF:main60                                    Main                      <no location info>                                384           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        590           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      591           0    0.0    0.0     0.0    0.0
+    showCurve                                  Main                      src/Main.hs:75:1-43                               593           0    0.0    0.0     0.0    0.0
+     showPoint                                 Main                      src/Main.hs:67:1-36                               611           0    0.0    0.0     0.0    0.0
+      show                                     Main                      src/Main.hs:60:3-25                               612           6    0.0    0.0     0.0    0.0
+ CAF:main61                                    Main                      <no location info>                                372           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        594           0    0.0    0.0     0.0    0.0
+   example2                                    Main                      src/Main.hs:(285,1)-(287,79)                      595           0    0.0    0.0     0.0    0.0
+    generateCandidatePoints                    Main                      src/Main.hs:(244,1)-(249,73)                      597           1    0.0    0.0     0.0    0.0
+     generateCandidatePoints.\                 Main                      src/Main.hs:(245,11)-(247,53)                     602           4    0.0    0.0     0.0    0.0
+      collidesWith                             Main                      src/Main.hs:269:1-43                              603           4    0.0    0.0     0.0    0.0
+      falsifiesConstraints                     Main                      src/Main.hs:263:1-75                              604           4    0.0    0.0     0.0    0.0
+       checkPointConstraint                    Main                      src/Main.hs:(120,1)-(129,20)                      605           8    0.0    0.0     0.0    0.0
+        toInt                                  Main                      src/Main.hs:63:1-17                               608           6    0.0    0.0     0.0    0.0
+     generateAllPoints                         Main                      src/Main.hs:(183,1)-(188,33)                      599           3    0.0    0.0     0.0    0.0
+      generateAllPoints.idxs                   Main                      src/Main.hs:186:13-47                             600           2    0.0    0.0     0.0    0.0
+      generateAllPoints.tailDimPoints          Main                      src/Main.hs:185:13-78                             601           2    0.0    0.0     0.0    0.0
+     generateCandidatePoints.maxPoint          Main                      src/Main.hs:249:9-73                              609           1    0.0    0.0     0.0    0.0
+     isFull                                    Main                      src/Main.hs:(253,1)-(259,41)                      598           1    0.0    0.0     0.0    0.0
+ CAF:main63                                    Main                      <no location info>                                389           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        571           0    0.0    0.0     0.0    0.0
+   example1                                    Main                      src/Main.hs:173:1-66                              572           1    0.0    0.0     0.0    0.0
+ CAF:main64                                    Main                      <no location info>                                388           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        573           0    0.0    0.0     0.0    0.0
+   example1                                    Main                      src/Main.hs:173:1-66                              574           0    0.0    0.0     0.0    0.0
+    showList                                   Main                      src/Main.hs:59:10-17                              581           0    0.0    0.0     0.0    0.0
+     showsPrec                                 Main                      src/Main.hs:59:10-17                              584           0    0.0    0.0     0.0    0.0
+      show                                     Main                      src/Main.hs:60:3-25                               585         180    0.0    0.0     0.0    0.0
+ CAF:main65                                    Main                      <no location info>                                387           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        575           0    0.0    0.0     0.0    0.0
+   example1                                    Main                      src/Main.hs:173:1-66                              576           0    0.0    0.0     0.0    0.0
+    generateAllPoints                          Main                      src/Main.hs:(183,1)-(188,33)                      577           4    0.0    0.0     0.0    0.0
+     generateAllPoints.idxs                    Main                      src/Main.hs:186:13-47                             578           3    0.0    0.0     0.0    0.0
+     generateAllPoints.tailDimPoints           Main                      src/Main.hs:185:13-78                             579           3    0.0    0.0     0.0    0.0
+ CAF:main72                                    Main                      <no location info>                                358           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        531           0    0.0    0.0     0.0    0.0
+   readFeaturePool                             Main                      src/Main.hs:(32,1)-(35,65)                        532           0    0.0    0.0     0.0    0.0
+    readFeaturePool.sections                   Main                      src/Main.hs:34:7-37                               533           0    0.0    0.0     0.0    0.0
+     splitOn                                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40         534           0    0.0    0.0     0.0    0.0
+      dropDelims                               Data.List.Split.Internals src/Data/List/Split/Internals.hs:320:1-37         536           1    0.0    0.0     0.0    0.0
+ CAF:main73                                    Main                      <no location info>                                357           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        543           0    0.0    0.0     0.0    0.0
+   readFeaturePool                             Main                      src/Main.hs:(32,1)-(35,65)                        544           0    0.0    0.0     0.0    0.0
+    readFeaturePool.sections                   Main                      src/Main.hs:34:7-37                               545           0    0.0    0.0     0.0    0.0
+     splitOn                                   Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40         546           0    0.0    0.0     0.0    0.0
+      onSublist                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70         547           0    0.0    0.0     0.0    0.0
+ CAF:main9                                     Main                      <no location info>                                361           0    0.0    0.0     0.1    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        707           0    0.0    0.0     0.1    0.0
+   example3                                    Main                      src/Main.hs:239:1-61                              708           0    0.0    0.0     0.1    0.0
+    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      709           0    0.0    0.0     0.1    0.0
+     showSolutions.l                           Main                      src/Main.hs:236:9-46                              710           0    0.1    0.0     0.1    0.0
+ CAF:main_cvs                                  Main                      src/Main.hs:232:15-17                             359           0    0.0    0.0    99.8  100.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        678           0    0.0    0.0    99.8  100.0
+   example3                                    Main                      src/Main.hs:239:1-61                              679           0    0.0    0.0    99.8  100.0
+    generateAllSolutions                       Main                      src/Main.hs:205:1-51                              680           1    0.0    0.0    99.8  100.0
+     generateAllSolutions_                     Main                      src/Main.hs:(210,1)-(218,66)                      682       79745    0.4    0.6    99.8  100.0
+      generateAllSolutions_.isValid            Main                      src/Main.hs:215:3-60                              683       79745    0.1    0.0     0.2    0.1
+       checkCurveConstraints                   Main                      src/Main.hs:158:1-80                              685       79745    0.0    0.0     0.1    0.1
+        checkCurveConstraint                   Main                      src/Main.hs:(132,1)-(142,69)                      686       79745    0.1    0.0     0.1    0.0
+         checkCurveConstraint.len              Main                      src/Main.hs:141:11-28                             687       79745    0.0    0.0     0.0    0.0
+       puzzleData                              Main                      src/Main.hs:197:3-12                              684       79745    0.0    0.0     0.0    0.0
+      generateAllSolutions_.nextPoints         Main                      src/Main.hs:212:3-52                              688       79745    0.0    0.0    99.2   99.2
+       generateCandidatePoints                 Main                      src/Main.hs:(244,1)-(249,73)                      689       79745    6.1    0.2    99.1   99.2
+        generateCandidatePoints.\              Main                      src/Main.hs:(245,11)-(247,53)                     694    20414720    6.0    0.0    77.5   55.6
+         collidesWith                          Main                      src/Main.hs:269:1-43                              695    20414720    7.6    0.0    71.4   55.6
+          sharesCoordWith2                     Main                      src/Main.hs:(272,1)-(274,86)                      700    81208576   51.4   55.6    63.8   55.6
+           ==                                  Main                      src/Main.hs:58:33-34                              701           0   12.4    0.0    12.4    0.0
+         falsifiesConstraints                  Main                      src/Main.hs:263:1-75                              696      242176    0.0    0.0     0.1    0.0
+          checkPointConstraint                 Main                      src/Main.hs:(120,1)-(129,20)                      697      242176    0.0    0.0     0.0    0.0
+         compare                               Main                      src/Main.hs:58:37-39                              702           0    0.1    0.0     0.1    0.0
+        generateAllPoints                      Main                      src/Main.hs:(183,1)-(188,33)                      691      398725   14.6   41.3    15.4   43.4
+         generateAllPoints.idxs                Main                      src/Main.hs:186:13-47                             692      318980    0.7    2.0     0.7    2.0
+         generateAllPoints.tailDimPoints       Main                      src/Main.hs:185:13-78                             693      318980    0.2    0.1     0.2    0.1
+        isFull                                 Main                      src/Main.hs:(253,1)-(259,41)                      690       79745    0.0    0.0     0.0    0.0
+        generateCandidatePoints.maxPoint       Main                      src/Main.hs:249:9-73                              698       65921    0.2    0.0     0.2    0.0
+      generateAllSolutions_.possibleNextCurves Main                      src/Main.hs:214:3-60                              699       79745    0.1    0.2     0.1    0.2
+ CAF:main_l                                    Main                      src/Main.hs:236:9                                 363           0    0.0    0.0     0.0    0.0
+  main                                         Main                      src/Main.hs:(38,1)-(47,49)                        703           0    0.0    0.0     0.0    0.0
+   example3                                    Main                      src/Main.hs:239:1-61                              704           0    0.0    0.0     0.0    0.0
+    showSolutions                              Main                      src/Main.hs:(232,1)-(236,46)                      705           0    0.0    0.0     0.0    0.0
+     showSolutions.l                           Main                      src/Main.hs:236:9-46                              706           1    0.0    0.0     0.0    0.0
+ CAF:parsePoint                                Main                      src/Main.hs:69:1-10                               340           0    0.0    0.0     0.0    0.0
+  parsePoint                                   Main                      src/Main.hs:69:1-38                               633           1    0.0    0.0     0.0    0.0
+ CAF:showCurve                                 Main                      src/Main.hs:75:1-9                                350           0    0.0    0.0     0.0    0.0
+  showCurve                                    Main                      src/Main.hs:75:1-43                               592           1    0.0    0.0     0.0    0.0
+ CAF:showPoint                                 Main                      src/Main.hs:67:1-9                                348           0    0.0    0.0     0.0    0.0
+  showPoint                                    Main                      src/Main.hs:67:1-36                               610           1    0.0    0.0     0.0    0.0
+ CAF:testPuzzle1                               Main                      src/Main.hs:278:1-11                              301           0    0.0    0.0     0.0    0.0
+  testPuzzle1                                  Main                      src/Main.hs:(278,1)-(282,27)                      596           1    0.0    0.0     0.0    0.0
+ CAF:testPuzzle2                               Main                      src/Main.hs:222:1-11                              300           0    0.0    0.0     0.0    0.0
+  testPuzzle2                                  Main                      src/Main.hs:(222,1)-(229,31)                      681           1    0.0    0.0     0.0    0.0
+ main                                          Main                      src/Main.hs:(38,1)-(47,49)                        521           0    0.0    0.0     0.1    0.0
+  readFeaturePool                              Main                      src/Main.hs:(32,1)-(35,65)                        522           1    0.0    0.0     0.1    0.0
+   parseFeatureSection                         Main                      src/Main.hs:(25,1)-(28,46)                        566          13    0.0    0.0     0.0    0.0
+   readFeaturePool.sections                    Main                      src/Main.hs:34:7-37                               524           1    0.0    0.0     0.0    0.0
+    splitOn                                    Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40         525           1    0.0    0.0     0.0    0.0
+     onSublist                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70         530           1    0.0    0.0     0.0    0.0
+     split                                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:262:1-68         526           1    0.0    0.0     0.0    0.0
+      fromElem                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:(124,1)-(125,24) 559          14    0.0    0.0     0.0    0.0
+      splitInternal                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:(147,1)-(156,71) 539          14    0.0    0.0     0.0    0.0
+       splitInternal.(...)                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32         541          14    0.0    0.0     0.0    0.0
+        breakDelim                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:(159,1)-(164,34) 548        1453    0.0    0.0     0.0    0.0
+         matchDelim                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:(72,1)-(76,23)   549        1479    0.0    0.0     0.0    0.0
+          matchDelim.\                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:75:55-69         550          26    0.0    0.0     0.0    0.0
+         breakDelim.(...)                      Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48        568        1439    0.0    0.0     0.0    0.0
+         breakDelim.match                      Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48        570        1439    0.0    0.0     0.0    0.0
+         breakDelim.ys                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:163:20-48        567        1439    0.0    0.0     0.0    0.0
+       splitInternal.match                     Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32         551          14    0.0    0.0     0.0    0.0
+       splitInternal.toSplitList               Data.List.Split.Internals src/Data/List/Split/Internals.hs:(154,3)-(156,71) 552          14    0.0    0.0     0.0    0.0
+       splitInternal.xs                        Data.List.Split.Internals src/Data/List/Split/Internals.hs:152:3-32         540          14    0.0    0.0     0.0    0.0
+      delimiter                                Data.List.Split.Internals src/Data/List/Split/Internals.hs:22:5-13          542           1    0.0    0.0     0.0    0.0
+      postProcess                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(171,1)-(177,35) 527           1    0.0    0.0     0.0    0.0
+       condensePolicy                          Data.List.Split.Internals src/Data/List/Split/Internals.hs:29:5-18          538           1    0.0    0.0     0.0    0.0
+       delimPolicy                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:24:5-15          529           1    0.0    0.0     0.0    0.0
+       doCondense                              Data.List.Split.Internals src/Data/List/Split/Internals.hs:(187,1)-(194,20) 537           1    0.0    0.0     0.0    0.0
+       doDrop                                  Data.List.Split.Internals src/Data/List/Split/Internals.hs:(181,1)-(182,14) 554           1    0.0    0.0     0.0    0.0
+       doMerge                                 Data.List.Split.Internals src/Data/List/Split/Internals.hs:(216,1)-(218,14) 528           1    0.0    0.0     0.0    0.0
+       dropFinal                               Data.List.Split.Internals src/Data/List/Split/Internals.hs:(248,1)-(254,17) 557           1    0.0    0.0     0.0    0.0
+       dropInitial                             Data.List.Split.Internals src/Data/List/Split/Internals.hs:(243,1)-(244,19) 555           1    0.0    0.0     0.0    0.0
+       finalBlankPolicy                        Data.List.Split.Internals src/Data/List/Split/Internals.hs:34:5-20          558           1    0.0    0.0     0.0    0.0
+       initBlankPolicy                         Data.List.Split.Internals src/Data/List/Split/Internals.hs:32:5-19          556           1    0.0    0.0     0.0    0.0
+       insertBlanks                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:(200,1)-(202,38) 553           1    0.0    0.0     0.0    0.0
+        insertBlanks'                          Data.List.Split.Internals src/Data/List/Split/Internals.hs:(206,1)-(212,49) 560          27    0.0    0.0     0.0    0.0
+  showFeaturePool                              Main                      src/Main.hs:(51,1)-(53,40)                        562           1    0.0    0.0     0.0    0.0
+   showFeaturePool.showFeature                 Main                      src/Main.hs:53:9-40                               563          13    0.0    0.0     0.0    0.0
+    show                                       Main                      src/Main.hs:20:15-18                              565           0    0.0    0.0     0.0    0.0
+     showsPrec                                 Main                      src/Main.hs:20:15-18                              569          13    0.0    0.0     0.0    0.0
