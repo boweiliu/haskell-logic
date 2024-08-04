@@ -41,6 +41,7 @@ main = do
   putStrLn $ "Feature Pool:\n" ++ showFeaturePool featurePool
 
   putStrLn $ "Test 1 results:\n" ++ show (example1 ())
+  putStrLn $ "Test 2 results:\n" ++ show (example2 ())
 
 -- Convert a feature pool to a string for display purposes
 showFeaturePool :: [Feature] -> String
@@ -193,14 +194,26 @@ generateAllSolutions :: Puzzle -> [ Curve ]
 generateAllSolutions _ = undefined
 
 -- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
--- (assumes no duplicate values)
 generateCandidatePoints :: Puzzle -> Curve -> [ Point ]
-generateCandidatePoints (Puzzle _ univParams) cuv = filter ( undefined ) (generateAllPoints univParams)
+generateCandidatePoints (Puzzle constraints univParams) cuv = filter 
+  ( \p -> not (p `collidesWith` cuv) && not (p `falsifiesConstraints` constraints))
+  (generateAllPoints univParams)
 
 -- checks whether a point falsifies the constraints
 falsifiesConstraints :: Point -> [ FactConstraint ] -> Bool
-falsifiesConstraints p cs = undefined
+falsifiesConstraints p = any (== Just False) . map (checkPointConstraint p)
+-- falsifiesConstraints p cs = any (falsifiesConstraint p) cs 
+--   where falsifiesConstraint p_ c_ = (checkPointConstraint p_ c_) == Just False
 
-falsifiesConstraint :: Point -> FactConstraint -> Bool
-falsifiesConstraint p c = (checkPointConstraint p c) == Just False
+-- returns true if the point has a shared coordinate with any in the partial existing curve, false otherwise
+collidesWith :: Point -> Curve -> Bool
+collidesWith p = any ( sharesCoordWith2 p )
 
+sharesCoordWith2 :: Point -> Point -> Bool
+sharesCoordWith2 p1 p2 = case p1 of
+  [] -> False
+  _ -> if ((head p1) == (head p2)) then True else sharesCoordWith2 (tail p1) (tail p2)
+
+
+example2 :: () -> String
+example2 _ = show (generateCandidatePoints testPuzzle1 [])
