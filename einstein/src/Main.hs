@@ -1,5 +1,7 @@
 import Data.List.Split (splitOn)
 import Data.Maybe (fromMaybe)
+import Data.List (intercalate)
+import Control.Monad (liftM2)
 
 -- module Main (main) where
 
@@ -40,8 +42,9 @@ main = do
   -- Display the feature pool
   putStrLn $ "Feature Pool:\n" ++ showFeaturePool featurePool
 
-  putStrLn $ "Test 1 results:\n" ++ show (example1 ())
-  putStrLn $ "Test 2 results:\n" ++ show (example2 ())
+  putStrLn $ "Test 1 results:\n" ++ (example1 ())
+  putStrLn $ "Test 2 results:\n" ++ (example2 ())
+  putStrLn $ "Test 3 results:\n" ++ (example3 ())
 
 -- Convert a feature pool to a string for display purposes
 showFeaturePool :: [Feature] -> String
@@ -52,13 +55,24 @@ showFeaturePool features =
 
 -- Now start defining space over which to do the computation.
 newtype Idx = Idx Int deriving (Show, Eq) -- indexes into a vector, specifying which coord
-newtype Val = Val Int deriving (Show, Eq) -- the value a coordinate can hold
+newtype Val = Val Int deriving (Eq, Ord) -- the value a coordinate can hold
+instance Show Val where
+  show (Val x) = (show x)
+
 toInt :: Idx -> Int
 toInt (Idx i) = i
 
 type Point = [ Val ] -- len == $d$
+showPoint :: Point -> String
+showPoint = foldr (++) "" . map show
+parsePoint :: String -> Point
+parsePoint = map (Val . read . return)
+  
+
 type CubeDims = [ Int ] -- len == $d$
 type Curve = [ Point ] -- Any number of points
+showCurve :: Curve -> String
+showCurve = intercalate "," . map showPoint
 
 -- start by defining parameters:
 -- d = 2 (dimensions)
@@ -171,7 +185,7 @@ generateAllPoints (UniverseParams d ns) = case d of
   _ -> let  tailDimPoints = generateAllPoints (UniverseParams (d-1) (tail ns))
             idxs = map Val [0 .. (head ns - 1)]
     in
-    liftA2 (:) idxs tailDimPoints
+    liftM2 (:) idxs tailDimPoints
 
 
 -- generateAllCurves :: UniverseParams -> [ Curve ]
@@ -185,19 +199,58 @@ data Puzzle = Puzzle {
 } deriving (Show, Eq)
 
   
-testPuzzle1 :: Puzzle
-testPuzzle1 = (Puzzle [ (Count (CountConstraint Equ 1))  ] (UniverseParams 2 [2,2]))
 
 -- how to list all curves that solve a puzzle?
-
+-- DFS-y. WLOG your curves are lexicographical, so start with a partial curve and a list of partialCurves you've already looked at (since points are unordered in a curve). 
 generateAllSolutions :: Puzzle -> [ Curve ]
-generateAllSolutions _ = undefined
+generateAllSolutions p = generateAllSolutions_ p []
+
+-- recursively hold: the current partial curve, all prior completed solutions
+-- recurse by: adding a single point, finding all completed solutions, add them to the list
+generateAllSolutions_ :: Puzzle -> Curve -> [ Curve ]
+generateAllSolutions_ puz currCurve = let
+  nextPoints :: [ Point ]
+  nextPoints = generateCandidatePoints puz currCurve
+  possibleNextCurves :: [ Curve ]
+  possibleNextCurves = map ( flip (:) currCurve ) nextPoints
+  isValid = checkCurveConstraints currCurve (puzzleData puz)
+  in
+  (if isValid then ([ currCurve ]) else ([]))
+    ++ concat (map (generateAllSolutions_ puz) possibleNextCurves)
+
+
+testPuzzle2 :: Puzzle
+testPuzzle2 = (Puzzle [
+    (Count (CountConstraint Equ 2))
+    -- , (Affirm (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
+  ]
+  (UniverseParams 2 [2,2]))
+
+showSolutions :: [Curve] -> String
+showSolutions cvs = (show (length cvs)) ++ " solutions:\n" ++ (intercalate "\n" . map showCurve) cvs
+
+example3 :: () -> String
+example3 _ = showSolutions (generateAllSolutions testPuzzle2)
+
 
 -- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
 generateCandidatePoints :: Puzzle -> Curve -> [ Point ]
-generateCandidatePoints (Puzzle constraints univParams) cuv = filter 
-  ( \p -> not (p `collidesWith` cuv) && not (p `falsifiesConstraints` constraints))
+generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull puzz cuv) then [] else filter 
+  ( \p -> not (p `collidesWith` cuv) 
+    && not (p `falsifiesConstraints` constraints) 
+    && fromMaybe True (liftM2 (>=) (Just p) maxPoint) ) -- assumes curves are z-first
   (generateAllPoints univParams)
+  where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
+
+-- Check if we are not allowed to add any more points due to the count constraint!
+isFull :: Puzzle -> Curve -> Bool
+isFull (Puzzle constraints univParams) cu = case constraints of 
+  [] -> False
+  x:xs -> case x of
+    Count (CountConstraint cmptr n) -> case cmptr of
+      Geq -> False
+      _ -> if (length cu == n) then True else False
+    _ -> isFull (Puzzle xs univParams) cu
 
 -- checks whether a point falsifies the constraints
 falsifiesConstraints :: Point -> [ FactConstraint ] -> Bool
@@ -215,5 +268,15 @@ sharesCoordWith2 p1 p2 = case p1 of
   _ -> if ((head p1) == (head p2)) then True else sharesCoordWith2 (tail p1) (tail p2)
 
 
+testPuzzle1 :: Puzzle
+testPuzzle1 = (Puzzle [
+    (Count (CountConstraint Equ 2)),
+    (Affirm (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
+  ]
+  (UniverseParams 2 [2,2]))
+
 example2 :: () -> String
-example2 _ = show (generateCandidatePoints testPuzzle1 [])
+example2 _ = showCurve (generateCandidatePoints testPuzzle1 [])
+ ++ "\n" ++ showCurve (generateCandidatePoints testPuzzle1 [ parsePoint "00" ])
+ ++ "\n" ++ showCurve (generateCandidatePoints testPuzzle1 [ parsePoint "10" ])
+
