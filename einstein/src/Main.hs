@@ -126,6 +126,22 @@ checkCurveConstraint curve constraint = case constraint of
     where len = length curve
   where pointChecks = map ( `checkPointConstraint` constraint ) curve
 
+-- checkPartialCurveConstraint :: Curve -> FactConstraint -> Maybe Bool
+-- checkPartialCurveConstraint curve constraint = case constraint of 
+--   Exists _ -> (foldr (||) False . map (fromMaybe False))  pointChecks
+--   Affirm _ -> (foldr (&&) True . map (fromMaybe True))  pointChecks
+--   Exact _ -> (foldr (||) False . map (fromMaybe False))  pointChecks
+--   Negative _ -> (foldr (&&) True . map (fromMaybe True))  pointChecks
+--   Count (CountConstraint c cval) -> case c of
+--     Equ -> len == cval
+--     Leq -> len <= cval
+--     Geq -> len >= cval
+--     where len = length curve
+--   where pointChecks = map ( `checkPointConstraint` constraint ) curve
+
+checkCurveConstraints :: Curve -> [ FactConstraint ] -> Bool  
+checkCurveConstraints cu constraints = all (checkCurveConstraint cu) constraints
+
 -- hum dum. testing
 testData1 :: FactConstraint
 testData1 = Exists (ExistsConstraint (Idx 0) (Val 10))
@@ -156,10 +172,35 @@ generateAllPoints (UniverseParams d ns) = case d of
     in
     liftA2 (:) idxs tailDimPoints
 
+
 -- generateAllCurves :: UniverseParams -> [ Curve ]
 -- do i even need to write this
 
 
--- first, actually, just manually concoct a set of constraints
+-- first, actually, just manually concoct a set of constraints, and see if it is solvable
+data Puzzle = Puzzle {
+  puzzleData :: [ FactConstraint ],
+  puzzleParams :: UniverseParams
+} deriving (Show, Eq)
 
+  
+testPuzzle1 :: Puzzle
+testPuzzle1 = (Puzzle [ (Count (CountConstraint Equ 1))  ] (UniverseParams 2 [2,2]))
+
+-- how to list all curves that solve a puzzle?
+
+generateAllSolutions :: Puzzle -> [ Curve ]
+generateAllSolutions _ = undefined
+
+-- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
+-- (assumes no duplicate values)
+generateCandidatePoints :: Puzzle -> Curve -> [ Point ]
+generateCandidatePoints (Puzzle _ univParams) cuv = filter ( undefined ) (generateAllPoints univParams)
+
+-- checks whether a point falsifies the constraints
+falsifiesConstraints :: Point -> [ FactConstraint ] -> Bool
+falsifiesConstraints p cs = undefined
+
+falsifiesConstraint :: Point -> FactConstraint -> Bool
+falsifiesConstraint p c = (checkPointConstraint p c) == Just False
 
