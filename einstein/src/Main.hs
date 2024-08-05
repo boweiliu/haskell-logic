@@ -1,8 +1,9 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE GADTs #-}
 import Data.List.Split (splitOn)
 import qualified Data.Set as Set
 import Data.Maybe (fromMaybe)
-import Data.List (intercalate)
+import Data.List (intercalate, sort)
 import Control.Monad (liftM2)
 import Data.Function.Memoize (deriveMemoizable, memoize)
 
@@ -58,6 +59,7 @@ main = do
   putStrLn $ "Test 1 results:\n" ++ (example1 ())
   putStrLn $ "Test 2 results:\n" ++ (example2 ())
   putStrLn $ "Test 3 results:\n" ++ (example3 ())
+  putStrLn $ "Test 4 results:\n" ++ (example4 ())
 
 -- Convert a feature pool to a string for display purposes
 showFeaturePool :: [Feature] -> String
@@ -261,11 +263,32 @@ generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull pu
   (generateUnivPointsAvoiding univParams cuv)
   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
 
-smallSetFromList :: Ord a => [a] -> Set.Set a
-smallSetFromList = Set.fromList
+data SmallSetImpl a where
+    SmallList :: [a] -> SmallSetImpl a
+    SmallSet  :: Set.Set a -> SmallSetImpl a
 
-removeSmallSetMembers :: Ord a => [a] -> Set.Set a -> [a]
-removeSmallSetMembers ls ss = filter (`Set.notMember` ss) ls
+
+smallSetFromList :: Ord a => [a] -> SmallSetImpl a
+-- smallSetFromList = SmallSet . Set.fromList
+smallSetFromList = SmallList . sort . reverse -- assumes the curve's points are in reverse order
+
+removeSmallSetMembers :: Ord a => [a] -> SmallSetImpl a -> [a]
+removeSmallSetMembers xs (SmallSet ss) = filter (`Set.notMember` ss) xs
+-- removeSmallSetMembers xs (SmallList sl) = filter (`notElem` sl) xs
+removeSmallSetMembers xs (SmallList sl) = xs `minusList` sl
+
+-- returns elements of the first list which are not in the second. both lists must be sorted asc
+minusList :: Ord a => [a] -> [a] -> [a]
+minusList [] _ = []
+minusList xs [] = xs
+minusList (x:xs) (y:ys)
+  | x < y  = x : minusList xs (y:ys)
+  | x > y  = minusList (x:xs) ys
+  | otherwise = minusList xs ys
+
+example4 :: () -> String
+example4 _ = show ([1,2,3,4,5] `minusList` [1,3])
+
 
 generateUnivPointsAvoiding :: UniverseParams -> Curve -> [ Point ]
 generateUnivPointsAvoiding univp@(UniverseParams d ns) cuv = case (numUnivDims univp) of
