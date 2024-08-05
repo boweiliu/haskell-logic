@@ -237,7 +237,7 @@ testPuzzle2 = (Puzzle [
     -- , Exact (ExactConstraint (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
     -- ,Exists (ExistsConstraint (Idx 0) (Val 0))
   ]
-  (UniverseParams 4 [4,4,4,4]))
+  (UniverseParams 5 [4,4,4,4,4]))
 
 showSolutions :: [Curve] -> String
 showSolutions cvs = 
@@ -252,15 +252,6 @@ example3 _ = showSolutions (generateAllSolutions testPuzzle2)
 
 -- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
 generateCandidatePoints :: Puzzle -> Curve -> [ Point ]
--- generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull puzz cuv) then [] else filter 
---   ( \p -> True
---     -- assumes curves are ordered reverse lexicographically, which is the natural way
---     && fromMaybe True (liftM2 (>=) (Just p) maxPoint)
---     && not (p `collidesWith` cuv) 
---     && not (p `falsifiesConstraints` constraints) 
---   )
---   (generateUnivPoints univParams)
---   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
 generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull puzz cuv) then [] else filter 
   ( \p -> True
     -- assumes curves are ordered reverse lexicographically, which is the natural way
@@ -270,6 +261,12 @@ generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull pu
   (generateUnivPointsAvoiding univParams cuv)
   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
 
+smallSetFromList :: Ord a => [a] -> Set.Set a
+smallSetFromList = Set.fromList
+
+removeSmallSetMembers :: Ord a => [a] -> Set.Set a -> [a]
+removeSmallSetMembers ls ss = filter (`Set.notMember` ss) ls
+
 generateUnivPointsAvoiding :: UniverseParams -> Curve -> [ Point ]
 generateUnivPointsAvoiding univp@(UniverseParams d ns) cuv = case (numUnivDims univp) of
   0 -> [ [ ] ]
@@ -278,8 +275,8 @@ generateUnivPointsAvoiding univp@(UniverseParams d ns) cuv = case (numUnivDims u
             in
             generateUnivPointsAvoiding (UniverseParams (d-1) (tail ns)) smallerCuv
             )
-           idx0ValsToAvoid = Set.fromList (map head cuv)
-           idx0Vals = filter (`Set.notMember` idx0ValsToAvoid) (map Val [0 .. (head ns - 1)])
+           idx0ValsToAvoid = smallSetFromList (map head cuv)
+           idx0Vals = (map Val [0 .. (head ns - 1)]) `removeSmallSetMembers` idx0ValsToAvoid
     in
     liftM2 (:) idx0Vals tailPoints
 
