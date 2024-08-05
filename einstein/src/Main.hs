@@ -249,7 +249,8 @@ showSolutions cvs =
   where l = show (length cvs) ++ " solutions."
 
 example3 :: () -> String
-example3 _ = showSolutions (generateAllSolutions testPuzzle2)
+-- example3 _ = showSolutions (generateAllSolutions testPuzzle2)
+example3 _ = showSolutions (take 10 (generateAllSolutions testPuzzle2))
 
 
 -- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
