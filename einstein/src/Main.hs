@@ -1,5 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 import Data.List.Split (splitOn)
+import qualified Data.Set as Set
 import Data.Maybe (fromMaybe)
 import Data.List (intercalate)
 import Control.Monad (liftM2)
@@ -188,7 +189,7 @@ example1 _ = show ((generateUnivPoints (UniverseParams 3 [3,4,5])))
 generateUnivPoints_ :: UniverseParams -> Curve
 generateUnivPoints_ (UniverseParams d ns) = case d of
   0 -> [ [] ]
-  _ -> let  tailDimPoints = generateUnivPoints (UniverseParams (d-1) (tail ns))
+  _ -> let  tailDimPoints = generateUnivPoints_ (UniverseParams (d-1) (tail ns))
             idxs = map Val [0 .. (head ns - 1)]
     in
     liftM2 (:) idxs tailDimPoints
@@ -251,15 +252,36 @@ example3 _ = showSolutions (generateAllSolutions testPuzzle2)
 
 -- algorithm: given a puzzle and some points so far, figure out the set of other points that can be added
 generateCandidatePoints :: Puzzle -> Curve -> [ Point ]
+-- generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull puzz cuv) then [] else filter 
+--   ( \p -> True
+--     -- assumes curves are ordered reverse lexicographically, which is the natural way
+--     && fromMaybe True (liftM2 (>=) (Just p) maxPoint)
+--     && not (p `collidesWith` cuv) 
+--     && not (p `falsifiesConstraints` constraints) 
+--   )
+--   (generateUnivPoints univParams)
+--   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
 generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull puzz cuv) then [] else filter 
   ( \p -> True
     -- assumes curves are ordered reverse lexicographically, which is the natural way
     && fromMaybe True (liftM2 (>=) (Just p) maxPoint)
-    && not (p `collidesWith` cuv) 
     && not (p `falsifiesConstraints` constraints) 
   )
-  (generateUnivPoints univParams)
+  (generateUnivPointsAvoiding univParams cuv)
   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
+
+generateUnivPointsAvoiding :: UniverseParams -> Curve -> [ Point ]
+generateUnivPointsAvoiding univp@(UniverseParams d ns) cuv = case (numUnivDims univp) of
+  0 -> [ [ ] ]
+  _ -> let tailPoints = (
+            let smallerCuv = map tail cuv
+            in
+            generateUnivPointsAvoiding (UniverseParams (d-1) (tail ns)) smallerCuv
+            )
+           idx0ValsToAvoid = Set.fromList (map head cuv)
+           idx0Vals = filter (`Set.notMember` idx0ValsToAvoid) (map Val [0 .. (head ns - 1)])
+    in
+    liftM2 (:) idx0Vals tailPoints
 
 -- Check if we are not allowed to add any more points due to the count constraint!
 isFull :: Puzzle -> Curve -> Bool
