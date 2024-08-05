@@ -176,7 +176,7 @@ testData4 = Negative (NegativeConstraint (AffirmConstraint (Idx 0) (Val 10) (Idx
 example1 :: () -> String
 -- example1 _ = show (checkCurveConstraint testCurve2 testData4)
 -- example1 _ = show (checkPointConstraint (testCurve2 !! 0) testData3)
-example1 _ = show ((generateAllPoints (UniverseParams 3 [3,4,5])))
+example1 _ = show ((generateUnivPoints (UniverseParams 3 [3,4,5])))
 
 
 -- i want to generate all valid curves in a UniverseParams
@@ -185,17 +185,17 @@ example1 _ = show ((generateAllPoints (UniverseParams 3 [3,4,5])))
 -- then filter by satisfying d-dim injectivity (no repeated coordinate values)
 -- data UniverseParams = UniverseParams 
 
-generateAllPoints_ :: UniverseParams -> Curve
-generateAllPoints_ (UniverseParams d ns) = case d of
+generateUnivPoints_ :: UniverseParams -> Curve
+generateUnivPoints_ (UniverseParams d ns) = case d of
   0 -> [ [] ]
-  _ -> let  tailDimPoints = generateAllPoints (UniverseParams (d-1) (tail ns))
+  _ -> let  tailDimPoints = generateUnivPoints (UniverseParams (d-1) (tail ns))
             idxs = map Val [0 .. (head ns - 1)]
     in
     liftM2 (:) idxs tailDimPoints
 
 
-generateAllPoints :: UniverseParams -> Curve
-generateAllPoints = memoize generateAllPoints_
+generateUnivPoints :: UniverseParams -> Curve
+generateUnivPoints = memoize generateUnivPoints_
 
 
 -- generateAllCurves :: UniverseParams -> [ Curve ]
@@ -258,7 +258,7 @@ generateCandidatePoints puzz@(Puzzle constraints univParams) cuv = if (isFull pu
     && not (p `collidesWith` cuv) 
     && not (p `falsifiesConstraints` constraints) 
   )
-  (generateAllPoints univParams)
+  (generateUnivPoints univParams)
   where maxPoint = if (length cuv == 0) then Nothing else Just (head cuv)
 
 -- Check if we are not allowed to add any more points due to the count constraint!
