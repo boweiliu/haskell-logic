@@ -239,7 +239,7 @@ testPuzzle2 = (Puzzle [
     -- , Exact (ExactConstraint (AffirmConstraint (Idx 0) (Val 0) (Idx 1) (Val 1)))
     -- ,Exists (ExistsConstraint (Idx 0) (Val 0))
   ]
-  (UniverseParams 5 [4,4,4,4,4]))
+  (UniverseParams 4 [5,5,5,5]))
 
 showSolutions :: [Curve] -> String
 showSolutions cvs = 

@@ -1,29 +1,29 @@
-	Sun Aug  4 23:22 2024 Time and Allocation Profiling Report  (Final)
+	Sun Aug  4 23:23 2024 Time and Allocation Profiling Report  (Final)
 
 	   einstein +RTS -p -RTS
 
-	total time  =       21.02 secs   (21016 ticks @ 1000 us, 1 processor)
-	total alloc = 47,130,468,728 bytes  (excludes profiling overheads)
+	total time  =        6.27 secs   (6273 ticks @ 1000 us, 1 processor)
+	total alloc = 12,885,933,912 bytes  (excludes profiling overheads)
 
 COST CENTRE                                      MODULE    SRC                            %time %alloc
 
-generateUnivPointsAvoiding                       Main      src/Main.hs:(294,1)-(304,34)    18.6   27.5
-minusList                                        Main      src/Main.hs:(282,1)-(287,31)    11.3    1.8
-generateUnivPointsAvoiding.idx0ValsToAvoid       Main      src/Main.hs:301:12-60           10.4   18.3
-generateAllSolutions_                            Main      src/Main.hs:(223,1)-(231,66)     9.6   15.9
-generateUnivPointsAvoiding.idx0Vals              Main      src/Main.hs:302:12-92            8.7   17.2
-generateCandidatePoints.\                        Main      src/Main.hs:(258,11)-(261,49)    7.0    0.0
-generateCandidatePoints                          Main      src/Main.hs:(257,1)-(264,73)     5.9    3.7
-<                                                Main      src/Main.hs:73:37-39             4.1    0.0
-generateUnivPointsAvoiding.tailPoints.smallerCuv Main      src/Main.hs:297:17-41            3.7    4.0
->                                                Main      src/Main.hs:73:37-39             3.3    0.0
-checkCurveConstraints                            Main      src/Main.hs:167:1-80             2.7    0.9
-smallSetFromList                                 Main      src/Main.hs:273:1-38             2.5    4.4
-compare                                          Main      src/Main.hs:73:37-39             2.1    0.0
-generateAllSolutions_.possibleNextCurves         Main      src/Main.hs:227:3-60             1.9    4.6
-checkCurveConstraint.len                         Main      src/Main.hs:150:11-28            1.6    0.6
-checkCurveConstraint                             Main      src/Main.hs:(141,1)-(151,69)     1.3    0.0
-generateAllSolutions_.isValid                    Main      src/Main.hs:228:3-60             1.2    0.0
+smallSetFromList                                 Main      src/Main.hs:273:1-45            17.2   20.1
+generateUnivPointsAvoiding                       Main      src/Main.hs:(294,1)-(304,34)    13.7   15.9
+minusList                                        Main      src/Main.hs:(282,1)-(287,31)    11.8    2.5
+generateUnivPointsAvoiding.tailPoints.smallerCuv Main      src/Main.hs:297:17-41            9.1   11.6
+generateUnivPointsAvoiding.idx0ValsToAvoid       Main      src/Main.hs:301:12-60            8.9   17.7
+generateUnivPointsAvoiding.idx0Vals              Main      src/Main.hs:302:12-92            8.6   19.8
+compare                                          Main      src/Main.hs:73:37-39             4.5    0.0
+<                                                Main      src/Main.hs:73:37-39             4.0    0.0
+generateAllSolutions_                            Main      src/Main.hs:(223,1)-(231,66)     3.7    5.5
+>                                                Main      src/Main.hs:73:37-39             3.2    0.0
+generateCandidatePoints                          Main      src/Main.hs:(257,1)-(264,73)     2.7    1.4
+generateCandidatePoints.\                        Main      src/Main.hs:(258,11)-(261,49)    2.6    0.0
+generateUnivPointsAvoiding.tailPoints            Main      src/Main.hs:(296,12)-(300,13)    2.2    2.7
+showSolutions.l                                  Main      src/Main.hs:249:9-46             1.8    0.0
+generateCandidatePoints.maxPoint                 Main      src/Main.hs:264:9-73             1.1    0.5
+checkCurveConstraints                            Main      src/Main.hs:167:1-80             1.1    0.3
+generateAllSolutions_.possibleNextCurves         Main      src/Main.hs:227:3-60             0.8    1.8
 
 
                                                                                                                                                            individual      inherited
@@ -37,7 +37,6 @@ MAIN                                                       MAIN                 
  CAF                                                       GHC.IO.FD                 <entire-module>                                    646           0    0.0    0.0     0.0    0.0
  CAF                                                       GHC.IO.Handle.FD          <entire-module>                                    644           0    0.0    0.0     0.0    0.0
  CAF                                                       GHC.IO.Handle.Internals   <entire-module>                                    643           0    0.0    0.0     0.0    0.0
- CAF                                                       GHC.TopHandler            <entire-module>                                    617           0    0.0    0.0     0.0    0.0
  CAF                                                       GHC.Weak.Finalize         <entire-module>                                    608           0    0.0    0.0     0.0    0.0
  CAF:$fEqAffirmConstraint1                                 Main                      <no location info>                                 462           0    0.0    0.0     0.0    0.0
   ==                                                       Main                      src/Main.hs:73:33-34                               908           1    0.0    0.0     0.0    0.0
@@ -124,10 +123,25 @@ MAIN                                                       MAIN                 
   main                                                     Main                      src/Main.hs:(52,1)-(62,49)                         981           0    0.0    0.0     0.0    0.0
    example3                                                Main                      src/Main.hs:252:1-61                               982           0    0.0    0.0     0.0    0.0
     showSolutions                                          Main                      src/Main.hs:(245,1)-(249,46)                       983           1    0.0    0.0     0.0    0.0
- CAF:main44                                                Main                      <no location info>                                 557           0    0.0    0.0     0.2    0.0
-  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                         984           0    0.0    0.0     0.2    0.0
-   example3                                                Main                      src/Main.hs:252:1-61                               985           0    0.0    0.0     0.2    0.0
-    showSolutions                                          Main                      src/Main.hs:(245,1)-(249,46)                       986           0    0.2    0.0     0.2    0.0
+ CAF:main2                                                 Main                      <no location info>                                 546           0    0.0    0.0     0.0    0.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                        1026           0    0.0    0.0     0.0    0.0
+   example4                                                Main                      src/Main.hs:290:1-49                              1027           1    0.0    0.0     0.0    0.0
+ CAF:main25                                                Main                      <no location info>                                 549           0    0.0    0.0     1.8    0.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                        1022           0    0.0    0.0     1.8    0.0
+   example3                                                Main                      src/Main.hs:252:1-61                              1023           0    0.0    0.0     1.8    0.0
+    showSolutions                                          Main                      src/Main.hs:(245,1)-(249,46)                      1024           0    0.0    0.0     1.8    0.0
+     showSolutions.l                                       Main                      src/Main.hs:249:9-46                              1025           0    1.8    0.0     1.8    0.0
+ CAF:main3                                                 Main                      <no location info>                                 545           0    0.0    0.0     0.0    0.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                        1028           0    0.0    0.0     0.0    0.0
+   example4                                                Main                      src/Main.hs:290:1-49                              1029           0    0.0    0.0     0.0    0.0
+ CAF:main4                                                 Main                      <no location info>                                 544           0    0.0    0.0     0.0    0.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                        1030           0    0.0    0.0     0.0    0.0
+   example4                                                Main                      src/Main.hs:290:1-49                              1031           0    0.0    0.0     0.0    0.0
+    minusList                                              Main                      src/Main.hs:(282,1)-(287,31)                      1032           4    0.0    0.0     0.0    0.0
+ CAF:main44                                                Main                      <no location info>                                 557           0    0.0    0.0     0.0    0.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                         984           0    0.0    0.0     0.0    0.0
+   example3                                                Main                      src/Main.hs:252:1-61                               985           0    0.0    0.0     0.0    0.0
+    showSolutions                                          Main                      src/Main.hs:(245,1)-(249,46)                       986           0    0.0    0.0     0.0    0.0
  CAF:main46                                                Main                      <no location info>                                 574           0    0.0    0.0     0.0    0.0
   main                                                     Main                      src/Main.hs:(52,1)-(62,49)                         882           0    0.0    0.0     0.0    0.0
    example2                                                Main                      src/Main.hs:(341,1)-(343,79)                       883           1    0.0    0.0     0.0    0.0
@@ -157,7 +171,7 @@ MAIN                                                       MAIN                 
        removeSmallSetMembers                               Main                      src/Main.hs:(276,1)-(278,59)                       967           2    0.0    0.0     0.0    0.0
         minusList                                          Main                      src/Main.hs:(282,1)-(287,31)                       968           5    0.0    0.0     0.0    0.0
       generateUnivPointsAvoiding.idx0ValsToAvoid           Main                      src/Main.hs:301:12-60                              964           2    0.0    0.0     0.0    0.0
-       smallSetFromList                                    Main                      src/Main.hs:273:1-38                               965           2    0.0    0.0     0.0    0.0
+       smallSetFromList                                    Main                      src/Main.hs:273:1-45                               965           2    0.0    0.0     0.0    0.0
       generateUnivPointsAvoiding.tailPoints                Main                      src/Main.hs:(296,12)-(300,13)                      973           2    0.0    0.0     0.0    0.0
        generateUnivPointsAvoiding.tailPoints.smallerCuv    Main                      src/Main.hs:297:17-41                              974           1    0.0    0.0     0.0    0.0
      generateCandidatePoints.\                             Main                      src/Main.hs:(258,11)-(261,49)                      976           1    0.0    0.0     0.0    0.0
@@ -185,7 +199,7 @@ MAIN                                                       MAIN                 
        removeSmallSetMembers                               Main                      src/Main.hs:(276,1)-(278,59)                       930           2    0.0    0.0     0.0    0.0
         minusList                                          Main                      src/Main.hs:(282,1)-(287,31)                       931           4    0.0    0.0     0.0    0.0
       generateUnivPointsAvoiding.idx0ValsToAvoid           Main                      src/Main.hs:301:12-60                              927           2    0.0    0.0     0.0    0.0
-       smallSetFromList                                    Main                      src/Main.hs:273:1-38                               928           2    0.0    0.0     0.0    0.0
+       smallSetFromList                                    Main                      src/Main.hs:273:1-45                               928           2    0.0    0.0     0.0    0.0
       generateUnivPointsAvoiding.tailPoints                Main                      src/Main.hs:(296,12)-(300,13)                      941           2    0.0    0.0     0.0    0.0
        generateUnivPointsAvoiding.tailPoints.smallerCuv    Main                      src/Main.hs:297:17-41                              942           1    0.0    0.0     0.0    0.0
      generateCandidatePoints.\                             Main                      src/Main.hs:(258,11)-(261,49)                      943           1    0.0    0.0     0.0    0.0
@@ -218,7 +232,7 @@ MAIN                                                       MAIN                 
        removeSmallSetMembers                               Main                      src/Main.hs:(276,1)-(278,59)                       900           2    0.0    0.0     0.0    0.0
         minusList                                          Main                      src/Main.hs:(282,1)-(287,31)                       901           2    0.0    0.0     0.0    0.0
       generateUnivPointsAvoiding.idx0ValsToAvoid           Main                      src/Main.hs:301:12-60                              897           2    0.0    0.0     0.0    0.0
-       smallSetFromList                                    Main                      src/Main.hs:273:1-38                               898           2    0.0    0.0     0.0    0.0
+       smallSetFromList                                    Main                      src/Main.hs:273:1-45                               898           2    0.0    0.0     0.0    0.0
       generateUnivPointsAvoiding.tailPoints                Main                      src/Main.hs:(296,12)-(300,13)                      902           2    0.0    0.0     0.0    0.0
        generateUnivPointsAvoiding.tailPoints.smallerCuv    Main                      src/Main.hs:297:17-41                              903           1    0.0    0.0     0.0    0.0
      generateCandidatePoints.maxPoint                      Main                      src/Main.hs:264:9-73                               905           1    0.0    0.0     0.0    0.0
@@ -281,36 +295,42 @@ MAIN                                                       MAIN                 
     readFeaturePool.sections                               Main                      src/Main.hs:48:7-37                                763           0    0.0    0.0     0.0    0.0
      splitOn                                               Data.List.Split.Internals src/Data/List/Split/Internals.hs:488:1-40          764           0    0.0    0.0     0.0    0.0
       onSublist                                            Data.List.Split.Internals src/Data/List/Split/Internals.hs:299:1-70          765           0    0.0    0.0     0.0    0.0
- CAF:main_cvs                                              Main                      src/Main.hs:245:15-17                              547           0    0.0    0.0    99.8  100.0
-  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                         987           0    0.0    0.0    99.8  100.0
-   example3                                                Main                      src/Main.hs:252:1-61                               988           0    0.0    0.0    99.8  100.0
-    generateAllSolutions                                   Main                      src/Main.hs:218:1-51                               989           1    0.0    0.0    99.8  100.0
-     generateAllSolutions_                                 Main                      src/Main.hs:(223,1)-(231,66)                       991    16912002    9.6   15.9    99.8  100.0
-      generateAllSolutions_.isValid                        Main                      src/Main.hs:228:3-60                               992    16912002    1.2    0.0     6.8    1.4
-       checkCurveConstraints                               Main                      src/Main.hs:167:1-80                               994    16912002    2.7    0.9     5.6    1.4
-        checkCurveConstraint                               Main                      src/Main.hs:(141,1)-(151,69)                       995    16912002    1.3    0.0     2.9    0.6
-         checkCurveConstraint.len                          Main                      src/Main.hs:150:11-28                              996    16912002    1.6    0.6     1.6    0.6
-       puzzleData                                          Main                      src/Main.hs:210:3-12                               993    16912002    0.0    0.0     0.0    0.0
-      generateAllSolutions_.nextPoints                     Main                      src/Main.hs:225:3-52                               997    16912002    0.5    0.0    81.6   78.1
-       generateCandidatePoints                             Main                      src/Main.hs:(257,1)-(264,73)                       998    16912002    5.9    3.7    81.1   78.1
-        generateCandidatePoints.\                          Main                      src/Main.hs:(258,11)-(261,49)                     1009    48819103    7.0    0.0    10.1    0.0
-         falsifiesConstraints                              Main                      src/Main.hs:318:1-75                              1011    16912001    0.9    0.0     1.0    0.0
-          checkPointConstraint                             Main                      src/Main.hs:(129,1)-(138,20)                      1012    16912001    0.1    0.0     0.1    0.0
-         compare                                           Main                      src/Main.hs:73:37-39                              1016           0    2.1    0.0     2.1    0.0
-        generateUnivPointsAvoiding                         Main                      src/Main.hs:(294,1)-(304,34)                      1000    25946232   18.6   27.5    64.1   74.2
-         numUnivDims                                       Main                      src/Main.hs:13:5-15                               1001    25946232    0.0    0.0     0.0    0.0
-         generateUnivPointsAvoiding.idx0Vals               Main                      src/Main.hs:302:12-92                             1004    24139386    8.7   17.2    28.0   19.0
-          removeSmallSetMembers                            Main                      src/Main.hs:(276,1)-(278,59)                      1005    24139386    0.6    0.0    19.3    1.8
-           minusList                                       Main                      src/Main.hs:(282,1)-(287,31)                      1006   121480276   11.3    1.8    18.7    1.8
-            <                                              Main                      src/Main.hs:73:37-39                              1014           0    4.1    0.0     4.1    0.0
-            >                                              Main                      src/Main.hs:73:37-39                              1015           0    3.3    0.0     3.3    0.0
-         generateUnivPointsAvoiding.idx0ValsToAvoid        Main                      src/Main.hs:301:12-60                             1002    24139386   10.4   18.3    12.9   22.8
-          smallSetFromList                                 Main                      src/Main.hs:273:1-38                              1003    24139386    2.5    4.4     2.5    4.4
-         generateUnivPointsAvoiding.tailPoints             Main                      src/Main.hs:(296,12)-(300,13)                     1007     9034230    0.9    0.9     4.6    4.9
-          generateUnivPointsAvoiding.tailPoints.smallerCuv Main                      src/Main.hs:297:17-41                             1008     7227384    3.7    4.0     3.7    4.0
-        isFull                                             Main                      src/Main.hs:(308,1)-(314,41)                       999    16912002    0.7    0.0     0.7    0.0
-        generateCandidatePoints.maxPoint                   Main                      src/Main.hs:264:9-73                              1010     1806846    0.4    0.2     0.4    0.2
-      generateAllSolutions_.possibleNextCurves             Main                      src/Main.hs:227:3-60                              1013    16912001    1.9    4.6     1.9    4.6
+ CAF:main_cvs                                              Main                      src/Main.hs:245:15-17                              547           0    0.0    0.0    98.2  100.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                         987           0    0.0    0.0    98.2  100.0
+   example3                                                Main                      src/Main.hs:252:1-61                               988           0    0.0    0.0    98.2  100.0
+    generateAllSolutions                                   Main                      src/Main.hs:218:1-51                               989           1    0.0    0.0    98.2  100.0
+     generateAllSolutions_                                 Main                      src/Main.hs:(223,1)-(231,66)                       991     1784321    3.7    5.5    98.2  100.0
+      generateAllSolutions_.isValid                        Main                      src/Main.hs:228:3-60                               992     1784321    0.4    0.0     2.4    0.6
+       checkCurveConstraints                               Main                      src/Main.hs:167:1-80                               994     1784321    1.1    0.3     2.0    0.6
+        checkCurveConstraint                               Main                      src/Main.hs:(141,1)-(151,69)                       995     1784321    0.4    0.0     0.9    0.2
+         checkCurveConstraint.len                          Main                      src/Main.hs:150:11-28                              996     1784321    0.5    0.2     0.5    0.2
+       puzzleData                                          Main                      src/Main.hs:210:3-12                               993     1784321    0.0    0.0     0.0    0.0
+      generateAllSolutions_.nextPoints                     Main                      src/Main.hs:225:3-52                               997     1784321    0.1    0.0    91.3   92.1
+       generateCandidatePoints                             Main                      src/Main.hs:(257,1)-(264,73)                       998     1784321    2.7    1.4    91.2   92.1
+        generateUnivPointsAvoiding                         Main                      src/Main.hs:(294,1)-(304,34)                      1000     9047046   13.7   15.9    83.1   90.3
+         numUnivDims                                       Main                      src/Main.hs:13:5-15                               1001     9047046    0.0    0.0     0.0    0.0
+         generateUnivPointsAvoiding.idx0Vals               Main                      src/Main.hs:302:12-92                             1004     7594501    8.6   19.8    28.4   22.3
+          removeSmallSetMembers                            Main                      src/Main.hs:(276,1)-(278,59)                      1005     7594501    0.7    0.0    19.8    2.5
+           minusList                                       Main                      src/Main.hs:(282,1)-(287,31)                      1006    35891205   11.8    2.5    19.0    2.5
+            <                                              Main                      src/Main.hs:73:37-39                              1014           0    4.0    0.0     4.0    0.0
+            >                                              Main                      src/Main.hs:73:37-39                              1015           0    3.2    0.0     3.2    0.0
+         generateUnivPointsAvoiding.idx0ValsToAvoid        Main                      src/Main.hs:301:12-60                             1002     7594501    8.9   17.7    29.7   37.8
+          smallSetFromList                                 Main                      src/Main.hs:273:1-45                              1003     7594501   17.2   20.1    20.8   20.1
+           compare                                         Main                      src/Main.hs:73:37-39                              1017           0    3.6    0.0     3.6    0.0
+         generateUnivPointsAvoiding.tailPoints             Main                      src/Main.hs:(296,12)-(300,13)                     1007     7262725    2.2    2.7    11.3   14.3
+          generateUnivPointsAvoiding.tailPoints.smallerCuv Main                      src/Main.hs:297:17-41                             1008     5810180    9.1   11.6     9.1   11.6
+        generateCandidatePoints.\                          Main                      src/Main.hs:(258,11)-(261,49)                     1009     5558272    2.6    0.0     3.9    0.0
+         falsifiesConstraints                              Main                      src/Main.hs:318:1-75                              1011     1784320    0.3    0.0     0.4    0.0
+          checkPointConstraint                             Main                      src/Main.hs:(129,1)-(138,20)                      1012     1784320    0.0    0.0     0.0    0.0
+         compare                                           Main                      src/Main.hs:73:37-39                              1016           0    0.9    0.0     0.9    0.0
+        isFull                                             Main                      src/Main.hs:(308,1)-(314,41)                       999     1784321    0.4    0.0     0.4    0.0
+        generateCandidatePoints.maxPoint                   Main                      src/Main.hs:264:9-73                              1010     1452545    1.1    0.5     1.1    0.5
+      generateAllSolutions_.possibleNextCurves             Main                      src/Main.hs:227:3-60                              1013     1784321    0.8    1.8     0.8    1.8
+ CAF:main_l                                                Main                      src/Main.hs:249:9                                  551           0    0.0    0.0     0.0    0.0
+  main                                                     Main                      src/Main.hs:(52,1)-(62,49)                        1018           0    0.0    0.0     0.0    0.0
+   example3                                                Main                      src/Main.hs:252:1-61                              1019           0    0.0    0.0     0.0    0.0
+    showSolutions                                          Main                      src/Main.hs:(245,1)-(249,46)                      1020           0    0.0    0.0     0.0    0.0
+     showSolutions.l                                       Main                      src/Main.hs:249:9-46                              1021           1    0.0    0.0     0.0    0.0
  CAF:parsePoint                                            Main                      src/Main.hs:84:1-10                                520           0    0.0    0.0     0.0    0.0
   parsePoint                                               Main                      src/Main.hs:84:1-38                                936           1    0.0    0.0     0.0    0.0
  CAF:showCurve                                             Main                      src/Main.hs:89:1-9                                 533           0    0.0    0.0     0.0    0.0
@@ -321,7 +341,7 @@ MAIN                                                       MAIN                 
   testPuzzle1                                              Main                      src/Main.hs:(334,1)-(338,27)                       892           1    0.0    0.0     0.0    0.0
  CAF:testPuzzle2                                           Main                      src/Main.hs:235:1-11                               484           0    0.0    0.0     0.0    0.0
   testPuzzle2                                              Main                      src/Main.hs:(235,1)-(242,33)                       990           1    0.0    0.0     0.0    0.0
- main                                                      Main                      src/Main.hs:(52,1)-(62,49)                         739           0    0.0    0.0     0.0    0.0
+ main                                                      Main                      src/Main.hs:(52,1)-(62,49)                         739           0    0.0    0.0     0.1    0.0
   readFeaturePool                                          Main                      src/Main.hs:(46,1)-(49,65)                         740           1    0.0    0.0     0.0    0.0
    parseFeatureSection                                     Main                      src/Main.hs:(39,1)-(42,46)                         784          13    0.0    0.0     0.0    0.0
    readFeaturePool.sections                                Main                      src/Main.hs:48:7-37                                742           1    0.0    0.0     0.0    0.0
