@@ -344,3 +344,13 @@ example2 _ = showCurve (generateCandidatePoints testPuzzle1 [])
  ++ "\n" ++ showCurve (generateCandidatePoints testPuzzle1 [ parsePoint "10" ])
 
 
+
+
+-- blargh
+-- start over with solver algorithm.
+-- We're given a set of givenConstraints
+-- We want to find out if they are already self-contradictory.
+-- If so, then there are 0 solutions are we are done. If not, then we should be able to find
+-- a point to add that does NOT cause a subsequent contradiction.
+-- Why? Suppose not -- that for any point in the universe, adding it causes the resulting puzzle to be unsolvable.
+-- Being unsolvable: we take that to be defined to mean that there exists a constraint, necessarily of the form # \intersect_i (x_i \rel v_i) == n, that is unsolvable, i.e. zooming into its support set, the subpuzzle is unsolvable.
