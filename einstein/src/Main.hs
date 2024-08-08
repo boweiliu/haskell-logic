@@ -355,3 +355,6 @@ example2 _ = showCurve (generateCandidatePoints testPuzzle1 [])
 -- Why? Suppose not -- that for any point in the universe, adding it causes the resulting puzzle to be unsolvable.
 -- Being unsolvable: we take that to be defined to mean that there exists a constraint, necessarily of the form # \intersect_i (x_i \rel v_i) == n, that is unsolvable, i.e. zooming into its support set, the subpuzzle is unsolvable.
 -- BUT: what about the following? plane -- says count >= 0. each of the 6 cols -- count == 1. 1/6 of the rows == empty, 1/6 of the rows has 6 empty cells, and the other 4 rows have count >= 1. This is unsolvable but what algorithm will tell you that??
+-- ans: build up deducedConstraints additively
+-- BUT: what about 2x rows which are "count <= 1" and 3x cols which are "count >= 5"?
+-- ans: thats not a contradiction YET. hopefully we will "zoom in on" constraints which have difficulty to be satisfied (i.e. low variance) when we are deciding the imminent next point to pick.
